@@ -1,0 +1,85 @@
+!!!
+%html{:lang => "pl_PL"}
+  %head
+    %meta{:charset => "utf-8"}
+    %title Lighter.pl
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    %link{:href=>"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css", :rel=>"stylesheet"}
+    %link{:href=>"https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", :rel=>"stylesheet"}
+    = csrf_meta_tags
+%body
+  %nav.navbar.navbar-default.navbar-inverse.navbar-static-top{:role=>"navigation"}
+    .container    
+      .navbar-header
+        %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Rozwiń nawigacje
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{:href=>"/home/index"}
+          %i.fa.fa-fire.fa-fw.fa-lg
+          Lighter.pl
+      .collapse.navbar-collapse{:id => "bs-example-navbar-collapse-1"}
+        %ul.nav.navbar-nav
+          %li
+            %a{:href => "#"} Aktualności
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Filmiki
+            %ul.dropdown-menu{:role => "menu"}
+              %li
+                %a{:href => "#"} Tricki
+              %li
+                %a{:href => "#"} Prezentacje
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Galeria
+            %ul.dropdown-menu{:role => "menu"}
+              %li
+                %a{:href => "#"} Zdjęcia
+              %li
+                %a{:href => "#"} Grafika
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Zapalniczka
+            %ul.dropdown-menu{:role => "menu"}
+              %li
+                %a{:href => "#"} Budowa
+              %li
+                %a{:href => "#"} Rodzaje
+              %li
+                %a{:href => "#"} Historia
+          %li
+            %a{:href => "#"} Tutoriale
+        %form.navbar-form.navbar-left{:role => "search"}
+          .form-group
+            %input.form-control{:type => "text", :placeholder => "Szukaj"}
+            %button.btn.btn-default{:type => "submit"}
+              %i.fa.fa-search
+        - if user_signed_in?
+          %ul.nav.navbar-nav.navbar-right
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                = current_user.email
+                %span.caret
+              %ul.dropdown-menu{:role => "menu"}
+                %li
+                  %a{:href => "#"} Ustawienia
+                %li
+                  = link_to('Logout', destroy_user_session_path, :method => :delete)
+        - else
+          .btn-group.navbar-right
+            %a.btn.btn-warning.navbar-btn{:role=>"button", "data-toggle" => "modal", "data-target" => "#registration"} Zarejestruj się            
+            %a.btn.btn-default.navbar-btn{:type => "button", "data-toggle" => "modal", "data-target" => "#login"} Zaloguj się
+
+
+  .container
+    = render "layouts/login_modal"
+    = render "layouts/registration_modal" 
+    = yield
+  .footer
+    .container
+      .text-center
+        © Copyright 2015 by Michał Olejniczak
+
+
+  %script{:src=> "//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"}
+  
