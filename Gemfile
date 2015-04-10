@@ -27,9 +27,9 @@ gem 'haml'
 gem 'haml-rails'
 gem 'devise'
 gem 'simple_form'
-
-gem 'jquery-turbolinks'
-
+gem 'carrierwave'
+gem 'mini_magick'
+  
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '~> 5.0'
 

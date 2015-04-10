@@ -1,0 +1,6 @@
+.col-md-8.col-md-offset-2
+  = simple_form_for @entry do |e|
+    = e.input :title, label: false, placeholder: 'Title'
+    = e.input :body, label: false, placeholder: 'Body', as: :text
+    = e.file_field :thumbnail
+    = e.button :submit, class: "center-block"
