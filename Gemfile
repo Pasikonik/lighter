@@ -28,6 +28,7 @@ gem 'haml-rails'
 gem 'devise'
 gem 'simple_form'
 gem 'carrierwave'
+gem 'carrierwave-video-thumbnailer'
 gem 'mini_magick'
   
 gem 'bootstrap-sass', '~> 3.3.4'

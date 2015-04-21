@@ -1,0 +1,24 @@
+// Place all the styles related to the Videos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.filtering {
+  border: solid 1px;
+  padding: 20px;
+}
+
+.video-thumb {
+  .title {
+    font-weight: bold;
+  }
+  // width: 200px;
+}
+
+// .lol {
+//   background-color: red;
+// }
+
+.valign {
+  display: block;
+  justify-content: center;
+}

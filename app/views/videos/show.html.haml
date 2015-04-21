@@ -1,0 +1,6 @@
+%h1.text-center 
+  = @video.title
+.text-center
+  = video_tag @video.source_url.to_s, width: 640, controls: true, autobuffer: true
+%p.text-center
+  = @video.description

@@ -19,7 +19,7 @@
           %span.icon-bar
         %a.navbar-brand{:href=>"/"}
           %i.fa.fa-fire.fa-fw.fa-lg.red-icon
-          Lighter.pl
+          %b Lighter.pl
       .collapse.navbar-collapse{:id => "bs-example-navbar-collapse-1"}
         %ul.nav.navbar-nav
           %li
@@ -28,9 +28,9 @@
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Filmiki
             %ul.dropdown-menu{:role => "menu"}
               %li
-                %a{:href => "#"} Tricki
+                = link_to "Tricki", videos_path
               %li
-                %a{:href => "#"} Prezentacje
+                = link_to "Prezentacje", videos_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Galeria
             %ul.dropdown-menu{:role => "menu"}
@@ -64,6 +64,8 @@
                 %li
                   %a{:href => "#"} Ustawienia
                 %li
+                  = link_to "Dodaj filmik", new_video_path
+                %li
                   = link_to('Logout', destroy_user_session_path, :method => :delete)
         - else
           .btn-group.navbar-right
@@ -71,14 +73,14 @@
             %a.btn.btn-default.navbar-btn{:type => "button", "data-toggle" => "modal", "data-target" => "#login"} Zaloguj się
 
 
-  .container
+  .container.main
     = render "layouts/login_modal"
     = render "layouts/registration_modal" 
     = yield
   .footer
     .container
       .text-center
-        © Copyright 2015 by Michał Olejniczak
+        copyright © 2015 Michał Olejniczak
 
 
   %script{:src=> "//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"}

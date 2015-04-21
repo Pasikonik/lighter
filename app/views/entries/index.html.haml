@@ -23,7 +23,7 @@
                 autor:
                 = current_user.email
                 .pull-right
-                  = e.created_at.strftime("%l:%M %d-%m-%Y")
+                  = e.created_at.strftime("%H:%M %d-%m-%Y")
               .entry-text
                 = e.body
       - unless e == @entries.last
