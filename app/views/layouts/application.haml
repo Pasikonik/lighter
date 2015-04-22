@@ -5,7 +5,6 @@
     %title Lighter.pl
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    %link{:href=>"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css", :rel=>"stylesheet"}
     %link{:href=>"https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", :rel=>"stylesheet"}
     = csrf_meta_tags
 %body
@@ -52,8 +51,6 @@
         %form.navbar-form.navbar-left{:role => "search"}
           .form-group
             %input.form-control{:type => "text", :placeholder => "Szukaj"}
-            %button.btn.btn-default{:type => "submit"}
-              %i.fa.fa-search
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right
             %li.dropdown
@@ -82,7 +79,3 @@
     .container
       .text-center
         copyright © 2015 Michał Olejniczak
-
-
-  %script{:src=> "//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"}
-  

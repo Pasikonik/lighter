@@ -8,13 +8,15 @@
   = @video.user.email
 .col-md-2.text-center
   wyświetleń:
-  10
-.col-md-2.text-center
+  = @video.impressionist_count
+.col-md-1.text-right
   - if current_user
-    - unless @video.average("score").nil?
-      = @video.average("score").avg.round(1)
-    = rating_for @video, "score", disable_after_rate: false
+    - unless @video.average("overall").nil?
+      = @video.average("overall").avg.round(1)
+.col-md-2
+  = rating_for @video, "overall", disable_after_rate: false
 - if @video.description?
   %br
   %p.col-md-6.col-md-offset-3.video-description.well
     = @video.description
+

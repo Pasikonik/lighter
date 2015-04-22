@@ -1,4 +1,5 @@
 class VideosController < ApplicationController
+  impressionist actions: [:show]
   before_action :set_video, only: [:show]
 
   def index
@@ -20,6 +21,7 @@ class VideosController < ApplicationController
   end
 
   def show
+    impressionist(@video)
   end
 
   private
