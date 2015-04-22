@@ -58,8 +58,9 @@
           %ul.nav.navbar-nav.navbar-right
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                %i.fa.fa-user
                 = current_user.email
-                %span.caret
+                %span.caret.red-icon
               %ul.dropdown-menu{:role => "menu"}
                 %li
                   %a{:href => "#"} Ustawienia

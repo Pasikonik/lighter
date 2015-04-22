@@ -30,6 +30,8 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'carrierwave-video-thumbnailer'
 gem 'mini_magick'
+gem 'ratyrate'
+gem 'impressionist'
   
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '~> 5.0'
