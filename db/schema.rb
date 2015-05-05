@@ -11,16 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421190149) do
-
-  create_table "average_caches", force: :cascade do |t|
-    t.integer  "rater_id"
-    t.integer  "rateable_id"
-    t.string   "rateable_type"
-    t.float    "avg",           null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20150505132600) do
 
   create_table "entries", force: :cascade do |t|
     t.string   "title"
@@ -33,66 +24,8 @@ ActiveRecord::Schema.define(version: 20150421190149) do
 
   add_index "entries", ["user_id"], name: "index_entries_on_user_id"
 
-  create_table "impressions", force: :cascade do |t|
-    t.string   "impressionable_type"
-    t.integer  "impressionable_id"
-    t.integer  "user_id"
-    t.string   "controller_name"
-    t.string   "action_name"
-    t.string   "view_name"
-    t.string   "request_hash"
-    t.string   "ip_address"
-    t.string   "session_hash"
-    t.text     "message"
-    t.text     "referrer"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
-  add_index "impressions", ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index"
-  add_index "impressions", ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index"
-  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index"
-  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index"
-  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
-  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
-  add_index "impressions", ["user_id"], name: "index_impressions_on_user_id"
-
-  create_table "overall_averages", force: :cascade do |t|
-    t.integer  "rateable_id"
-    t.string   "rateable_type"
-    t.float    "overall_avg",   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "rates", force: :cascade do |t|
-    t.integer  "rater_id"
-    t.integer  "rateable_id"
-    t.string   "rateable_type"
-    t.float    "stars",         null: false
-    t.string   "dimension"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
-  add_index "rates", ["rater_id"], name: "index_rates_on_rater_id"
-
-  create_table "rating_caches", force: :cascade do |t|
-    t.integer  "cacheable_id"
-    t.string   "cacheable_type"
-    t.float    "avg",            null: false
-    t.integer  "qty",            null: false
-    t.string   "dimension"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
-
   create_table "ratings", force: :cascade do |t|
-    t.integer  "value"
+    t.integer  "score"
     t.integer  "user_id"
     t.integer  "video_id"
     t.datetime "created_at", null: false
@@ -127,9 +60,11 @@ ActiveRecord::Schema.define(version: 20150421190149) do
     t.integer  "rating_id"
     t.integer  "user_id"
     t.string   "source"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "type"
+    t.integer  "views",       default: 0
+    t.float    "score",       default: 0.0
   end
 
   add_index "videos", ["user_id"], name: "index_videos_on_user_id"

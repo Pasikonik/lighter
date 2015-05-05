@@ -2,13 +2,49 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.filtering {
+.sidebar {
   border: solid 1px;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
+  height: 400px;
+}
+
+.left {
+  margin-left: 10px;
+  font-size: 14px;
+  width: 110px;
+  text-align: right;
+  float: left;
+}
+
+.right {
+  width: 65px;
+  float: left;
+}
+
+.score {
+  font-size: 16px;
+}
+
+.tags {
+  margin-top: 85px;
 }
 
 .video-thumb {
-  // width: 200px;
+  height: 200px;
+}
+
+.thumb {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+} 
+
+.thumb-title {
+  max-width: 192px;
+  margin: auto;
+  border-top: solid 9px #CC2131;
+  font-weight: bold;
+  padding-top: 2px;
 }
 
 .video-title {
@@ -26,6 +62,19 @@
   margin-top: 10px
 }
 
-.thumb-title {
-  font-weight: bold;
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  font-size: 24px;
+  color: #FFDE00;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
 }

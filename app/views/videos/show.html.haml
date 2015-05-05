@@ -3,18 +3,24 @@
 .text-center
   = video_tag @video.source_url.to_s, width: 640, controls: true, autobuffer: true, class: "red-border"
 %br
-.col-md-2.col-md-offset-3
-  wrzucił:
+.col-md-2.col-md-offset-3.text-center
+  %i.fa.fa-upload.fa-lg
+  %br
   = @video.user.email
 .col-md-2.text-center
-  wyświetleń:
-  = @video.impressionist_count
-.col-md-1.text-right
-  - if current_user
-    - unless @video.average("overall").nil?
-      = @video.average("overall").avg.round(1)
-.col-md-2
-  = rating_for @video, "overall", disable_after_rate: false
+  %i.fa.fa-eye.fa-lg
+  %br
+  = @video.views
+.col-md-2.text-center
+  #score
+    = @video.score.round(1)
+  #rate{:rated => @rate}
+    .rating
+      %span{"data-score" => "5"} ☆
+      %span{"data-score" => "4"} ☆
+      %span{"data-score" => "3"} ☆
+      %span{"data-score" => "2"} ☆
+      %span{"data-score" => "1"} ☆
 - if @video.description?
   %br
   %p.col-md-6.col-md-offset-3.video-description.well

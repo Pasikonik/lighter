@@ -7,6 +7,23 @@ body {
   margin-bottom: 40px;
 }
 
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: #111111;
+}
+
+a:hover , a:focus{
+    color: #CC2131 !important;
+    text-decoration: none !important;
+}
+
+a:active {
+    color: black;
+}
+
 .main {
   margin-bottom: 40px;
 }
@@ -20,3 +37,4 @@ body {
   height: 40px;
   background-color: #222222;
 }
+

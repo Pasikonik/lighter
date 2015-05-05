@@ -30,8 +30,8 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'carrierwave-video-thumbnailer'
 gem 'mini_magick'
-gem 'ratyrate'
-gem 'impressionist'
+
+gem 'hirb'
 
 gem 'jquery-turbolinks'
 

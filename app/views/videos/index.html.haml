@@ -1,11 +1,34 @@
 .voffset
   .col-md-3
-    .filtering
-      Sortowanie
+    .sidebar
+      %h2.text-center Sortowanie
+      .left
+        Data:
+        %br
+        Ocena:
+        %br
+        Wyświetlenia:
+        %br
+      .right
+        = link_to videos_path(date: "up") do
+          %i.fa.fa-fw.fa-lg.fa-caret-square-o-up
+        = link_to videos_path(date: "down") do
+          %i.fa.fa-fw.fa-lg.fa-caret-square-o-down
+        = link_to videos_path(rate: "up") do
+          %i.fa.fa-fw.fa-lg.fa-caret-square-o-up
+        = link_to videos_path(rate: "down") do
+          %i.fa.fa-fw.fa-lg.fa-caret-square-o-down
+        = link_to videos_path(views: "up") do
+          %i.fa.fa-fw.fa-lg.fa-caret-square-o-up
+        = link_to videos_path(views: "down") do
+          %i.fa.fa-fw.fa-lg.fa-caret-square-o-down
+      .tags
+        %h2.text-center Tagi
   .col-md-8
     - @videos.each do |v|
       .video-thumb.col-md-4
-        .text-center
-          = link_to image_tag(v.source.thumb), video_path(v.id)
-        .text-center.thumb-title
-          = v.title
+        .thumb
+          .text-center
+            = link_to image_tag(v.source.thumb), video_path(v.id)
+            .thumb-title
+              = v.title.upcase
