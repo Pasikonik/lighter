@@ -32,6 +32,7 @@ gem 'carrierwave-video-thumbnailer'
 gem 'mini_magick'
 
 gem 'hirb'
+gem 'acts_as_commentable'
 gem 'acts-as-taggable-on'
 gem 'tagmanager-rails'
 gem 'jquery-turbolinks'

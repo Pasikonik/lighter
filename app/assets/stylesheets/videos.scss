@@ -94,3 +94,33 @@
   border-width: 2px;
   padding: 2px 7px 2px 7px;
 }
+
+#comments {
+
+}
+
+.comment {
+  padding: 8px;
+  border: solid 1px;
+  border-radius: 3px;
+}
+
+.comment-author {
+  font-style: italic;
+  text-decoration: none;
+  display: inline-table;
+}
+
+.comment-author:after {
+  content: "";
+  width: 105%;
+  border-bottom: 0.10em solid #f00;
+  display: table-caption;
+  vertical-align: baseline;
+  position: relative;
+  top: 1.4em;
+}
+
+.comment-body {
+  margin-top: 8px;
+}

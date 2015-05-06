@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :vote]
+  before_action :set_video, only: [:show, :vote, :add_comment]
 
   def index
     @videos = Video.all
@@ -49,6 +49,8 @@ class VideosController < ApplicationController
     else
       @rate = 0
     end
+    @comments = @video.comments
+    @comment = Comment.new
   end
 
   def vote
@@ -61,6 +63,10 @@ class VideosController < ApplicationController
     render nothing: true
   end
 
+  def add_comment
+    @video.comments.create(comment: params[:comment][:comment], user: current_user)
+    render nothing: true
+  end
 
   private
 
@@ -71,4 +77,5 @@ class VideosController < ApplicationController
     def video_params
       params.require(:video).permit(:title, :description, :source, :rate)
     end
+
 end

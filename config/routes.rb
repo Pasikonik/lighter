@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  post '/rate' => 'rater#create', :as => 'rate'
   get 'videos/index'
 
   devise_for :users
@@ -20,6 +19,7 @@ Rails.application.routes.draw do
   resources :videos do
     member do
       post :vote
+      post :add_comment
     end
   end
 

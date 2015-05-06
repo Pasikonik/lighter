@@ -17,22 +17,26 @@ $ ->
   $(".tm-input").tagsManager
     hiddenTagListName: 'tag_list'
 
-  $("span[data-score]").hover ->
-    for i in [1..5]
-      $("span[data-score='#{i}']").text("☆")
+  # $("span[data-score]").hover ->
+  #   for i in [1..5]
+  #     $("span[data-score='#{i}']").text("☆")
 
-  $("span[data-score]").mouseout ->
-    checkStars(stars)
+  # $("span[data-score]").mouseout ->
+  #   checkStars(stars)
 
   $("span[data-score]").on 'click', ->
     index = $(this).data("score")   
-    path = window.location.pathname
+    path = location.pathname
     $.ajax
       type: 'POST'
       url: path + '/vote'
       data: $.param(video:
           rate: index)
     checkStars(index)
-    $('#score').load(location.pathname + " #score");
+    $('#score').load(path + " #score");
 
-
+  $("#comment_button").on 'click', ->
+    setTimeout (->
+      $('#comments').load(location.pathname + " #comments")
+      return
+    ), 50
