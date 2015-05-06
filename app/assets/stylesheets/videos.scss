@@ -5,7 +5,7 @@
 .sidebar {
   border: solid 1px;
   padding: 0 20px 20px 20px;
-  height: 400px;
+  height: 480px;
 }
 
 .left {
@@ -23,10 +23,6 @@
 
 .score {
   font-size: 16px;
-}
-
-.tags {
-  margin-top: 85px;
 }
 
 .video-thumb {
@@ -48,7 +44,7 @@
 }
 
 .video-title {
-  margin-bottom: 10px;
+  margin-bottom: 1px;
   font-size: 36px;
   font-weight: bold;
   letter-spacing: 2px;
@@ -77,4 +73,24 @@
 .rating > span:hover ~ span:before {
    content: "\2605";
    position: absolute;
+}
+
+.tag-label {
+  margin: 0px 4px 12px 4px;
+}
+
+.tags-line {
+  margin-bottom: 10px;
+}
+
+.tag {
+  // margin: 10px;
+  padding: 2px 8px 2px 8px;
+  border: solid 1px;
+  border-radius: 3px;
+}
+
+.tag:hover {
+  border-width: 2px;
+  padding: 2px 7px 2px 7px;
 }

@@ -3,14 +3,25 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 checkStars = (amount) ->
-  for i in [1..5]
-    $("span[data-score='#{i}']").text("☆")
+  if amount < 5
+    for i in [amount+1..5]
+      $("span[data-score='#{i}']").text("☆")
   for i in [1..amount]
     $("span[data-score='#{i}']").text("★")
 
 $ ->
   stars = $("#rate").attr('rated')
   if stars > 0
+    checkStars(stars)
+
+  $(".tm-input").tagsManager
+    hiddenTagListName: 'tag_list'
+
+  $("span[data-score]").hover ->
+    for i in [1..5]
+      $("span[data-score='#{i}']").text("☆")
+
+  $("span[data-score]").mouseout ->
     checkStars(stars)
 
   $("span[data-score]").on 'click', ->
@@ -23,4 +34,5 @@ $ ->
           rate: index)
     checkStars(index)
     $('#score').load(location.pathname + " #score");
-    
+
+

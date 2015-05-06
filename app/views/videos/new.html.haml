@@ -3,5 +3,6 @@
   = simple_form_for @video do |v|
     = v.input :title, label: false, placeholder: 'Title'
     = v.input :description, label: false, placeholder: 'Description', as: :text
+    = v.input :tag_list, label: false, placeholder: 'Tags', input_html: { class: 'tm-input' }
     = v.file_field :source
     = v.button :submit, class: "center-block"

@@ -32,7 +32,8 @@ gem 'carrierwave-video-thumbnailer'
 gem 'mini_magick'
 
 gem 'hirb'
-
+gem 'acts-as-taggable-on'
+gem 'tagmanager-rails'
 gem 'jquery-turbolinks'
 
 gem 'bootstrap-sass', '~> 3.3.4'

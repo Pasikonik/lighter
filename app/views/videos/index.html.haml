@@ -24,11 +24,15 @@
           %i.fa.fa-fw.fa-lg.fa-caret-square-o-down
       .tags
         %h2.text-center Tagi
+        - ActsAsTaggableOn::Tag.most_used(10).each do |tag|
+          %h4.text-center
+            = link_to tag.name, videos_path(tag: tag.name), class: 'tag'
   .col-md-8
     - @videos.each do |v|
       .video-thumb.col-md-4
         .thumb
           .text-center
-            = link_to image_tag(v.source.thumb), video_path(v.id)
-            .thumb-title
-              = v.title.upcase
+            = link_to video_path(v.id) do
+              = image_tag(v.source.thumb)
+              .thumb-title
+                = v.title.upcase

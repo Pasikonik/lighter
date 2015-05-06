@@ -22,9 +22,9 @@ class VideosController < ApplicationController
       elsif params[:rate] == "down"
         @videos = Video.order(:score).reverse
       end
-    end
-        
-      
+    elsif params[:tag]
+      @videos = Video.tagged_with(params[:tag])
+    end    
   end
 
   def new
@@ -34,6 +34,7 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.user = current_user
+    @video.tag_list = params[:tag_list]
     if @video.save
       redirect_to videos_path, notice: 'Video was successfully created'
     else
