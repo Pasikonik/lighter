@@ -1,6 +1,9 @@
 #= require jquery
 #= require bootstrap-sprockets
+#= require jquery-fileupload/basic
 #= require jquery.turbolinks
+#= require masonry/masonry.min
+#= require masonry/modernizr-transitions
 #= require tagmanager
 #= require jquery_ujs
 #= require turbolinks

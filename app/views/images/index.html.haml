@@ -1,0 +1,8 @@
+
+= render "images/new"
+%h1 Images
+
+#container.js-masonry{"data-masonry-options" => "{ \"columnWidth\": 200, \"itemSelector\": \".item\" }"}
+  #masonry-container.transitions-enabled.centered.clearfix
+    #images
+      = render @images

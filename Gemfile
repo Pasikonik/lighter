@@ -37,6 +37,11 @@ gem 'acts-as-taggable-on'
 gem 'tagmanager-rails'
 gem 'jquery-turbolinks'
 
+gem 'jquery-fileupload-rails'
+gem 'masonry-rails'
+gem 'fancybox2-rails'
+
+
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '~> 5.0'
 
@@ -47,7 +52,7 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
+  gem 'meta_request'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
