@@ -52,6 +52,7 @@ GEM
     builder (3.2.2)
     byebug (4.0.5)
       columnize (= 0.9.0)
+    callsite (0.0.11)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -77,6 +78,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.5.2)
+    fancybox2-rails (0.2.8)
+      railties (>= 3.1.0, < 5.0)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     haml (4.0.6)
@@ -97,6 +100,10 @@ GEM
     jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
+    jquery-fileupload-rails (0.4.5)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      sass (>= 3.2)
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -105,10 +112,19 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.2)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    masonry-rails (0.2.4)
+      railties
+    meta_request (0.3.4)
+      callsite (~> 0.0, >= 0.0.11)
+      rack-contrib (~> 1.1)
+      railties (>= 3.0.0, < 5.0.0)
     mime-types (2.5)
     mini_magick (4.2.3)
     mini_portile (0.6.2)
@@ -118,6 +134,8 @@ GEM
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     rack (1.6.0)
+    rack-contrib (1.2.0)
+      rack (>= 0.9.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.1)
@@ -204,12 +222,17 @@ DEPENDENCIES
   carrierwave-video-thumbnailer
   coffee-rails (~> 4.1.0)
   devise
+  fancybox2-rails
   haml
   haml-rails
   hirb
   jbuilder (~> 2.0)
+  jquery-fileupload-rails
   jquery-rails
   jquery-turbolinks
+  kaminari
+  masonry-rails
+  meta_request
   mini_magick
   rails (= 4.2.1)
   sass-rails (~> 5.0)

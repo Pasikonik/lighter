@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'images/index'
+
   get 'videos/index'
 
   devise_for :users
@@ -22,6 +24,8 @@ Rails.application.routes.draw do
       post :add_comment
     end
   end
+
+  resources :images
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

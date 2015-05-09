@@ -10,17 +10,17 @@
         Wyświetlenia:
         %br
       .right
-        = link_to videos_path(date: "up") do
+        = link_to videos_path(date: "ASC") do
           %i.fa.fa-fw.fa-lg.fa-caret-square-o-up
-        = link_to videos_path(date: "down") do
+        = link_to videos_path(date: "DESC") do
           %i.fa.fa-fw.fa-lg.fa-caret-square-o-down
-        = link_to videos_path(rate: "up") do
+        = link_to videos_path(rate: "ASC") do
           %i.fa.fa-fw.fa-lg.fa-caret-square-o-up
-        = link_to videos_path(rate: "down") do
+        = link_to videos_path(rate: "DESC") do
           %i.fa.fa-fw.fa-lg.fa-caret-square-o-down
-        = link_to videos_path(views: "up") do
+        = link_to videos_path(views: "ASC") do
           %i.fa.fa-fw.fa-lg.fa-caret-square-o-up
-        = link_to videos_path(views: "down") do
+        = link_to videos_path(views: "DESC") do
           %i.fa.fa-fw.fa-lg.fa-caret-square-o-down
       .tags
         %h2.text-center Tagi
@@ -28,11 +28,10 @@
           %h4.text-center
             = link_to tag.name, videos_path(tag: tag.name), class: 'tag'
   .col-md-8
-    - @videos.each do |v|
-      .video-thumb.col-md-4
-        .thumb
-          .text-center
-            = link_to video_path(v.id) do
-              = image_tag(v.source.thumb)
-              .thumb-title
-                = v.title.upcase
+    = render @videos
+    .row
+      .col-md-12
+        .text-center
+          .pagination
+            = paginate @videos
+

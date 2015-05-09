@@ -1,0 +1,11 @@
+
+= render "images/new"
+
+%nav#page-nav
+  = link_to "NEXT", images_path(page: @page), style: 'display: none'
+
+-# #container.js-masonry{"data-masonry-options" => "{ \"columnWidth\": 220, \"itemSelector\": \".item\" }"}
+#masonry-container.transitions-enabled.centered.infinite-scroll.clearfix
+  #images
+    = render @images
+
