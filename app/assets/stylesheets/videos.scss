@@ -1,0 +1,126 @@
+// Place all the styles related to the Videos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sidebar {
+  border: solid 1px;
+  padding: 0 20px 20px 20px;
+  height: 480px;
+}
+
+.left {
+  margin-left: 10px;
+  font-size: 14px;
+  width: 110px;
+  text-align: right;
+  float: left;
+}
+
+.right {
+  width: 65px;
+  float: left;
+}
+
+.score {
+  font-size: 16px;
+}
+
+.video-thumb {
+  height: 200px;
+}
+
+.thumb {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+} 
+
+.thumb-title {
+  max-width: 192px;
+  margin: auto;
+  border-top: solid 9px #CC2131;
+  font-weight: bold;
+  padding-top: 2px;
+}
+
+.video-title {
+  margin-bottom: 1px;
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.red-border {
+  border: dotted 20px #CC2131;
+}
+
+.video-description {
+  margin-top: 10px
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  font-size: 24px;
+  color: #FFDE00;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+
+.tag-label {
+  margin: 0px 4px 12px 4px;
+}
+
+.tags-line {
+  margin-bottom: 10px;
+}
+
+.tag {
+  // margin: 10px;
+  padding: 2px 8px 2px 8px;
+  border: solid 1px;
+  border-radius: 3px;
+}
+
+.tag:hover {
+  border-width: 2px;
+  padding: 2px 7px 2px 7px;
+}
+
+#comments {
+
+}
+
+.comment {
+  padding: 8px;
+  border: solid 1px;
+  border-radius: 3px;
+}
+
+.comment-author {
+  font-style: italic;
+  text-decoration: none;
+  display: inline-table;
+}
+
+.comment-author:after {
+  content: "";
+  width: 105%;
+  border-bottom: 0.10em solid #f00;
+  display: table-caption;
+  vertical-align: baseline;
+  position: relative;
+  top: 1.4em;
+}
+
+.comment-body {
+  margin-top: 8px;
+}

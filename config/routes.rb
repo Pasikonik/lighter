@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'videos/index'
+
   devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -11,6 +13,13 @@ Rails.application.routes.draw do
   resources :entries do ## TODO clean
     collection do
       get :index
+    end
+  end
+
+  resources :videos do
+    member do
+      post :vote
+      post :add_comment
     end
   end
 
