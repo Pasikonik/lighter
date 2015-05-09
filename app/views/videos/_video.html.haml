@@ -1,0 +1,7 @@
+.video-thumb.col-md-4
+  .thumb
+    .text-center
+      = link_to video_path(video.id) do
+        = image_tag(video.source.thumb)
+        .thumb-title
+          = video.title.upcase

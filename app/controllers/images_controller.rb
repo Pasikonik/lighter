@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
   def index
-    @images = Image.all
+    @images = Image.page(params[:page])
+    params[:page] ? @page = 1 + params[:page].to_i : @page = 1
   end
 
   def new

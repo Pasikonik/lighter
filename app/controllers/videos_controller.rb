@@ -2,29 +2,20 @@ class VideosController < ApplicationController
   before_action :set_video, only: [:show, :vote, :add_comment]
 
   def index
-    @videos = Video.all
+    @videos =  Video.page(params[:page])
     
-    if params[:date]
-      if params[:date] == "up"
-        @videos = Video.all
-      elsif params[:date] == "down"
-        @videos = Video.all.reverse
-      end
-    elsif params[:views]
-      if params[:views] == "up"
-        @videos = Video.order(:views)
-      elsif params[:views] == "down"
-        @videos = Video.order(:views).reverse
-      end
-    elsif params[:rate]
-      if params[:rate] == "up"
-        @videos = Video.order(:score)
-      elsif params[:rate] == "down"
-        @videos = Video.order(:score).reverse
-      end
+    allow = ['ASC', 'DESC']
+
+    if allow.include?(params[:date])
+      @videos = Video.order("created_at #{params[:date]}").page(params[:page]) 
+    elsif allow.include?(params[:rate])
+      @videos = Video.order("score #{params[:rate]}").page(params[:page]) 
+    elsif allow.include?(params[:views])
+      @videos = Video.order("views #{params[:views]}").page(params[:page])
     elsif params[:tag]
-      @videos = Video.tagged_with(params[:tag])
-    end    
+      @videos = Video.tagged_with(params[:tag]).page(params[:page])
+    end
+    
   end
 
   def new
@@ -76,6 +67,22 @@ class VideosController < ApplicationController
 
     def video_params
       params.require(:video).permit(:title, :description, :source, :rate)
+    end
+
+    def reverse(scope)
+      @per_page = Video.default_per_page
+      puts @per_page.to_s
+      total_count = scope.count
+      rest_count = total_count > @per_page ? (total_count % @per_page) : 0
+      @num_pages = total_count > @per_page ? (total_count / @per_page) : 1
+
+      if params[:page]
+        offset = params[:page].sub(/-.*/, '').to_i
+        current_page = @num_pages - (offset - 1) / @per_page
+        scope.page(current_page).per(@per_page).padding(rest_count)
+      else
+        scope.page(1).per(@per_page + rest_count)
+      end
     end
 
 end

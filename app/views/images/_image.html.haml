@@ -1,2 +1,3 @@
 .item
-  = image_tag image.src.thumb
+  = link_to image.src_url, rel: 'gallery' ,class: 'fancybox' do
+    = image_tag image.src.thumb

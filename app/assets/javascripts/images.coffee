@@ -3,6 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
+
+  $('.btn-to-upload').click ->
+    $('#image_src').trigger('click')
+
   $('#new_image').fileupload
 
     fail: (e, data) ->
@@ -18,18 +22,47 @@ jQuery ->
     $(".progress").css 'display', 'inline'
 
   $('#new_image').bind 'fileuploadstop', (e, data) ->
-    $("#images").load(location.pathname + " #images")
-    setTimeout (->
-      $(".progress").css 'display', 'none'
-      return
-    ), 3000
+    location.reload()
+    # $("#images").load(location.pathname + " #images")
+    # setTimeout (->
+    #   $(".progress").css 'display', 'none'
+    #   return
+    # ), 3000
 
-  $('.btn-to-upload').click ->
-    $('#image_src').trigger('click')
+  $container = $('#masonry-container')
+  $container.imagesLoaded ->
+    $container.masonry
+      itemSelector: '.item'
+      columnWidth: 220
+      isAnimated: !Modernizr.csstransitions
+      isFitWidth: true
 
-  $('#masonry-container').masonry
+  $('a.fancybox').fancybox ->
+
+
+
+
+  $container.infinitescroll {
+    navSelector: '#page-nav'
+    nextSelector: '#page-nav a'
     itemSelector: '.item'
-    columnWidth: 200
-    isAnimated: !Modernizr.csstransitions
-    isFitWidth: true
+    animate: false
+    loading:
+      speed: 'fast'
+      finishedMsg: 'There are all'
+      msg: $('<i></i>')
+  }, (newElements) ->
+    $newElems = $(newElements).css(opacity: 0)
+    $newElems.imagesLoaded ->
+      $newElems.animate opacity: 1
+      $container.masonry 'appended', $newElems, true
+      return
+    return
+  return
+
+
+
+
+
+
 

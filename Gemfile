@@ -37,6 +37,7 @@ gem 'acts-as-taggable-on'
 gem 'tagmanager-rails'
 gem 'jquery-turbolinks'
 
+gem 'kaminari'
 gem 'jquery-fileupload-rails'
 gem 'masonry-rails'
 gem 'fancybox2-rails'
