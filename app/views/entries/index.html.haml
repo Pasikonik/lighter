@@ -1,9 +1,5 @@
-%h1.text-center
-  %i.fa.fa-newspaper-o.fa-fw
-  %b Aktualności
-  %i.fa.fa-newspaper-o.fa-fw
 .row
-  - if current_user.admin?
+  - if user_signed_in? && current_user.admin?
     = render "/entries/new_entry"
 .row
   - if Entry.count == 0

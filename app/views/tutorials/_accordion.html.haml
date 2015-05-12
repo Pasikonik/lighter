@@ -1,0 +1,47 @@
+#accordion.panel-group{role: 'tablist', "aria-multiselectable": false}
+  .panel.panel-danger
+    #headingOne.panel-heading{role: 'tab'}
+      %h4.panel-title.text-center
+        %a{"data-toggle": "collapse", "data-parent": "#accordion", href: "#levelOne", "aria-controls": "levelOne"} Poziom 1
+    #levelOne.panel-collapse.collapse.in{role: "tabpanel", "aria-labelledby": "headingOne"}
+      .listGroup
+        .text-center= @tutorialOne.count
+        - @tutorialOne.each do |tutorial|
+          .list-group-item
+            = link_to tutorial.title, tutorial_path(tutorial)
+    #headingTwo.panel-heading{role: 'tab'}
+      %h4.panel-title.text-center
+        %a{"data-toggle": "collapse", "data-parent": "#accordion", href: "#levelTwo", "aria-controls": "levelTwo"} Poziom 2
+    #levelTwo.panel-collapse.collapse{role: "tabpanel", "aria-labelledby": "headingTwo"}
+      .listGroup
+        .text-center= @tutorialTwo.count
+        - @tutorialTwo.each do |tutorial|
+          .list-group-item              
+            = link_to tutorial.title, tutorial_path(tutorial)
+    #headingThree.panel-heading{role: 'tab'}
+      %h4.panel-title.text-center
+        %a{"data-toggle": "collapse", "data-parent": "#accordion", href: "#levelThree", "aria-controls": "levelThree"} Poziom 3
+    #levelThree.panel-collapse.collapse{role: "tabpanel", "aria-labelledby": "headingThree"}
+      .listGroup
+        .text-center= @tutorialThree.count
+        - @tutorialThree.each do |tutorial|
+          .list-group-item
+            = link_to tutorial.title, tutorial_path(tutorial)
+    #headingFour.panel-heading{role: 'tab'}
+      %h4.panel-title.text-center
+        %a{"data-toggle": "collapse", "data-parent": "#accordion", href: "#levelFour", "aria-controls": "levelFour"} Poziom 4
+    #levelFour.panel-collapse.collapse{role: "tabpanel", "aria-labelledby": "headingFour"}
+      .listGroup
+        .text-center= @tutorialFour.count
+        - @tutorialFour.each do |tutorial|
+          .list-group-item
+            = link_to tutorial.title, tutorial_path(tutorial)
+    #headingFive.panel-heading{role: 'tab'}
+      %h4.panel-title.text-center
+        %a{"data-toggle": "collapse", "data-parent": "#accordion", href: "#levelFive", "aria-controls": "levelFive"} Poziom 5
+    #levelFive.panel-collapse.collapse{role: "tabpanel", "aria-labelledby": "headingFive"}
+      .listGroup
+        .text-center= @tutorialFive.count
+        - @tutorialFive.each do |tutorial|
+          .list-group-item
+            = link_to tutorial.title, tutorial_path(tutorial)

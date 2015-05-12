@@ -1,27 +1,13 @@
 .voffset
   .col-md-3
     .sidebar
-      %h2.text-center Sortowanie
-      .left
-        Data:
+      .text-center
+        %h2.sort{"data-sort": params[:sort]} Sortowanie
+        = link_to 'data', videos_path(sort: "created_at"), id: 'created_at'
         %br
-        Ocena:
+        = link_to 'ocena', videos_path(sort: "score"), id: 'score'
         %br
-        Wyświetlenia:
-        %br
-      .right
-        = link_to videos_path(date: "ASC") do
-          %i.fa.fa-fw.fa-lg.fa-caret-square-o-up
-        = link_to videos_path(date: "DESC") do
-          %i.fa.fa-fw.fa-lg.fa-caret-square-o-down
-        = link_to videos_path(rate: "ASC") do
-          %i.fa.fa-fw.fa-lg.fa-caret-square-o-up
-        = link_to videos_path(rate: "DESC") do
-          %i.fa.fa-fw.fa-lg.fa-caret-square-o-down
-        = link_to videos_path(views: "ASC") do
-          %i.fa.fa-fw.fa-lg.fa-caret-square-o-up
-        = link_to videos_path(views: "DESC") do
-          %i.fa.fa-fw.fa-lg.fa-caret-square-o-down
+        = link_to 'wyświetlenia', videos_path(sort: "views"), id: 'views'
       .tags
         %h2.text-center Tagi
         - ActsAsTaggableOn::Tag.most_used(10).each do |tag|

@@ -1,8 +1,23 @@
 %h1.text-center Dodaj nowy filmik
 .col-md-8.col-md-offset-2
-  = simple_form_for @video do |v|
-    = v.input :title, label: false, placeholder: 'Title'
-    = v.input :description, label: false, placeholder: 'Description', as: :text
-    = v.input :tag_list, label: false, placeholder: 'Tags', input_html: { class: 'tm-input' }
-    = v.file_field :source
-    = v.button :submit, class: "center-block"
+  = simple_form_for @video do |f|
+    = f.input :title, label: false, placeholder: 'Title'
+    = f.input :description, label: false, placeholder: 'Description', as: :text
+    = f.input :tag_list, label: false, placeholder: 'Tags', input_html: { class: 'tm-input' }
+    .tab-panel
+      %ul.nav.nav-tabs{role: 'tablist'}
+        %li.active{role: 'presentation'}
+          %a{href: '#local', "aria-controls": "local", role: "tab", "data-toggle": "tab"} plik lokalny
+        %li{role: 'presentation'}
+          %a{href: '#remote', "aria-controls": "remote", role: "tab", "data-toggle": "tab"} youtube
+      .tab-content
+        .tab-pane.content-tab.active{role: 'tabpannel', id: 'local'}
+          = f.file_field :source
+        .tab-pane.content-tab{role: 'tabpannel', id: 'remote'}
+          = f.input :remote, label: false, placeholder: 'Youtube'
+    = f.button :submit, class: "center-block"
+
+
+
+
+

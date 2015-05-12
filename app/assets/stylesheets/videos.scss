@@ -2,23 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.content-tab {
+  padding: 10px;
+}
+
 .sidebar {
   border: solid 1px;
-  padding: 0 20px 20px 20px;
-  height: 480px;
+  padding-bottom: 10px;
 }
 
-.left {
-  margin-left: 10px;
-  font-size: 14px;
-  width: 110px;
-  text-align: right;
-  float: left;
-}
-
-.right {
-  width: 65px;
-  float: left;
+.filter-border {
+  border: solid 1px;
+  padding: 2px 4px 2px 4px;
+  margin: 2px;
 }
 
 .score {

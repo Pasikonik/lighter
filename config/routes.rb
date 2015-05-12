@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'tutorials/index'
+
   get 'images/index'
 
   get 'videos/index'
@@ -12,11 +14,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  resources :entries do ## TODO clean
-    collection do
-      get :index
-    end
-  end
+  resources :tutorials
+
+  resources :entries
 
   resources :videos do
     member do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507095820) do
+ActiveRecord::Schema.define(version: 20150511155002) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "title",            limit: 50, default: ""
@@ -77,6 +77,14 @@ ActiveRecord::Schema.define(version: 20150507095820) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
+  create_table "tutorials", force: :cascade do |t|
+    t.string   "title"
+    t.string   "video"
+    t.integer  "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -107,6 +115,7 @@ ActiveRecord::Schema.define(version: 20150507095820) do
     t.integer  "type"
     t.integer  "views",       default: 0
     t.float    "score",       default: 0.0
+    t.string   "remote"
   end
 
   add_index "videos", ["user_id"], name: "index_videos_on_user_id"

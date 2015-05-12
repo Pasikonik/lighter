@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-
+    
   $('.btn-to-upload').click ->
     $('#image_src').trigger('click')
 
@@ -37,10 +37,7 @@ jQuery ->
       isAnimated: !Modernizr.csstransitions
       isFitWidth: true
 
-  $('a.fancybox').fancybox ->
-
-
-
+  $('a.fancybox').fancybox()
 
   $container.infinitescroll {
     navSelector: '#page-nav'
@@ -49,17 +46,14 @@ jQuery ->
     animate: false
     loading:
       speed: 'fast'
-      finishedMsg: 'There are all'
       msg: $('<i></i>')
   }, (newElements) ->
     $newElems = $(newElements).css(opacity: 0)
     $newElems.imagesLoaded ->
       $newElems.animate opacity: 1
       $container.masonry 'appended', $newElems, true
-      return
-    return
-  return
 
+  
 
 
 

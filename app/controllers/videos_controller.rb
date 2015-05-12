@@ -4,14 +4,10 @@ class VideosController < ApplicationController
   def index
     @videos =  Video.page(params[:page])
     
-    allow = ['ASC', 'DESC']
+    allow = ['created_at', 'score', 'views']
 
-    if allow.include?(params[:date])
-      @videos = Video.order("created_at #{params[:date]}").page(params[:page]) 
-    elsif allow.include?(params[:rate])
-      @videos = Video.order("score #{params[:rate]}").page(params[:page]) 
-    elsif allow.include?(params[:views])
-      @videos = Video.order("views #{params[:views]}").page(params[:page])
+    if allow.include?(params[:sort])
+      @videos = Video.order("#{params[:sort]}").page(params[:page])
     elsif params[:tag]
       @videos = Video.tagged_with(params[:tag]).page(params[:page])
     end
@@ -24,6 +20,7 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.new(video_params)
+    @video.remote.sub!(/.*v=/, '') if @video.remote?
     @video.user = current_user
     @video.tag_list = params[:tag_list]
     if @video.save
@@ -66,7 +63,7 @@ class VideosController < ApplicationController
     end
 
     def video_params
-      params.require(:video).permit(:title, :description, :source, :rate)
+      params.require(:video).permit(:title, :description, :source, :remote, :rate)
     end
 
     def reverse(scope)

@@ -40,3 +40,13 @@ $ ->
       $('#comments').load(location.pathname + " #comments")
       return
     ), 50
+
+  sort = $('.sort').data('sort')
+  if sort
+    $("##{sort}").addClass 'filter-border'
+
+  $("a[href='#local'").click ->
+    $("input[name='video[remote]'").val('')
+
+  $("a[href='#remote'").click ->
+    $("input[name='video[source]'").val('')
