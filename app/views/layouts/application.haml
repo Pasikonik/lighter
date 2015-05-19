@@ -1,13 +1,29 @@
 !!!
-%html{:lang => "pl_PL"}
+%html{lang: "pl_PL"}
   %head
-    %meta{:charset => "utf-8"}
+    %meta{charset: "utf-8"}
     %title Lighter.pl
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    %link{:href=>"https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", :rel=>"stylesheet"}
+    %link{href: "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", rel: "stylesheet"}
     = csrf_meta_tags
 %body
+  :javascript
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '364496227077078',
+        xfbml      : true,
+        version    : 'v2.3'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
   %nav.navbar.navbar-default.navbar-inverse.navbar-static-top{:role=>"navigation"}
     .container    
       .navbar-header
@@ -38,19 +54,28 @@
                 %a{:href => "#"} Historia
           %li
             = link_to 'Tutoriale', tutorials_path
+          %li
+            %a{href: "#{}"}
+              %i.fa.fa-search
         %form.navbar-form.navbar-left{:role => "search"}
-          .form-group
-            %input.form-control{:type => "text", :placeholder => "Szukaj"}
+          -# = form_tag(videos_path, :method => "get", id: "search-form") do
+          -#   = text_field_tag :search, params[:search], placeholder: "Search Posts"
+          -#   = submit_tag "Search"
+            -# %input#inputSuccess2.form-control{:type => "text"}/
+            -# %span.glyphicon.glyphicon-search.form-control-feedback
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                %i.fa.fa-user
-                = current_user.email
+                - if current_user.avatar?
+                  = image_tag current_user.avatar_url, size: "20x20", class: 'avatar-frame'
+                - else
+                  %i.fa.fa-user
+                = current_user.login
                 %span.caret.red-icon
               %ul.dropdown-menu{:role => "menu"}
                 %li
-                  %a{:href => "#"} Ustawienia
+                  = link_to "Ustawienia", edit_user_registration_path
                 %li
                   = link_to "Dodaj filmik", new_video_path
                 %li

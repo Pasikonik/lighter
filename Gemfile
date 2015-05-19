@@ -36,7 +36,7 @@ gem 'acts_as_commentable'
 gem 'acts-as-taggable-on'
 gem 'tagmanager-rails'
 gem 'jquery-turbolinks'
-
+gem 'omniauth-facebook'
 gem 'kaminari'
 gem 'jquery-fileupload-rails'
 gem 'masonry-rails'

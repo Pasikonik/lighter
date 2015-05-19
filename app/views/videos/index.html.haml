@@ -2,17 +2,20 @@
   .col-md-3
     .sidebar
       .text-center
+        %h2.type{"data-type": params[:type]} Typ
+        .btn-group
+          = link_to 'Triki', @params.merge(type: 1), class: 'btn btn-default active', id: '1'
+          = link_to 'Prezentacje', @params.merge(type: 2), class: 'btn btn-default', id: '2'
         %h2.sort{"data-sort": params[:sort]} Sortowanie
-        = link_to 'data', videos_path(sort: "created_at"), id: 'created_at'
-        %br
-        = link_to 'ocena', videos_path(sort: "score"), id: 'score'
-        %br
-        = link_to 'wyświetlenia', videos_path(sort: "views"), id: 'views'
+        .btn-group
+          = link_to 'data', @params.merge(sort: "created_at"), id: 'created_at', class: 'btn btn-default active'
+          = link_to 'ocena', @params.merge(sort: "score"), id: 'score', class: 'btn btn-default'
+          = link_to 'wyświetlenia', @params.merge(sort: "views"), id: 'views', class: 'btn btn-default'
       .tags
-        %h2.text-center Tagi
+        %h2.text-center.tagg{"data-tag": params[:tag]} Tagi
         - ActsAsTaggableOn::Tag.most_used(10).each do |tag|
           %h4.text-center
-            = link_to tag.name, videos_path(tag: tag.name), class: 'tag'
+            = link_to tag.name, @params.merge(tag: tag.name), class: 'tag', id: "#{tag.name}-tag"
   .col-md-8
     = render @videos
     .row

@@ -1,17 +1,18 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :vote, :add_comment]
 
-  def index
-    @videos =  Video.page(params[:page])
-    
+  def index 
     allow = ['created_at', 'score', 'views']
 
-    if allow.include?(params[:sort])
-      @videos = Video.order("#{params[:sort]}").page(params[:page])
-    elsif params[:tag]
-      @videos = Video.tagged_with(params[:tag]).page(params[:page])
-    end
+    @videos = Video.all
     
+    @videos = @videos.where(kind: params[:type]) if params[:type]
+    @videos = @videos.tagged_with(params[:tag]) if params[:tag]
+    @videos = @videos.order("#{params[:sort]} DESC") if allow.include?(params[:sort])
+
+    @videos = @videos.page(params[:page])
+
+    @params = params.slice(:type, :sort, :tag) # prevent XSS attack
   end
 
   def new
@@ -63,7 +64,7 @@ class VideosController < ApplicationController
     end
 
     def video_params
-      params.require(:video).permit(:title, :description, :source, :remote, :rate)
+      params.require(:video).permit(:title, :description, :source, :remote, :rate, :kind)
     end
 
     def reverse(scope)

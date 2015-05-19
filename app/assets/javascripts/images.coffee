@@ -53,7 +53,11 @@ jQuery ->
       $newElems.animate opacity: 1
       $container.masonry 'appended', $newElems, true
 
-  
+  type = $('.type').data('type')
+  if type
+    $("#photos").removeClass 'active'
+    $("#graphics").addClass 'active'
+
 
 
 

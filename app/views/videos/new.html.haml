@@ -2,8 +2,9 @@
 .col-md-8.col-md-offset-2
   = simple_form_for @video do |f|
     = f.input :title, label: false, placeholder: 'Title'
-    = f.input :description, label: false, placeholder: 'Description', as: :text
+    = f.input :description, label: false, placeholder: 'Description', as: :text, input_html: {rows: 4}
     = f.input :tag_list, label: false, placeholder: 'Tags', input_html: { class: 'tm-input' }
+    = f.input :kind, collection: [['Tricks', 1], ['Presentation', 2]], label: false, prompt: 'Select type'
     .tab-panel
       %ul.nav.nav-tabs{role: 'tablist'}
         %li.active{role: 'presentation'}

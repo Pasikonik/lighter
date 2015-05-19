@@ -43,7 +43,16 @@ $ ->
 
   sort = $('.sort').data('sort')
   if sort
-    $("##{sort}").addClass 'filter-border'
+    $("#created_at").removeClass 'active'
+    $("##{sort}").addClass 'active'
+  type = $('.type').data('type')
+  if type
+    $("#1").removeClass 'active'
+    $("##{type}").addClass 'active'
+  tag = $('.tagg').data('tag')
+  if tag
+    $("##{tag}-tag").addClass 'chosen-tag'
+
 
   $("a[href='#local'").click ->
     $("input[name='video[remote]'").val('')

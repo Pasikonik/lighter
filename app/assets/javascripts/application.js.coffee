@@ -1,5 +1,4 @@
 #= require jquery
-#= require fancybox
 #= require bootstrap-sprockets
 #= require jquery-fileupload/basic
 #= require jquery.turbolinks
@@ -7,6 +6,7 @@
 #= require masonry/modernizr-transitions
 #= require masonry/jquery.imagesloaded.min
 #= require masonry/jquery.infinitescroll.min
+#= require fancybox
 #= require tagmanager
 #= require jquery_ujs
 #= require turbolinks
