@@ -8,22 +8,6 @@
     %link{href: "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", rel: "stylesheet"}
     = csrf_meta_tags
 %body
-  :javascript
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '364496227077078',
-        xfbml      : true,
-        version    : 'v2.3'
-      });
-    };
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
   %nav.navbar.navbar-default.navbar-inverse.navbar-static-top{:role=>"navigation"}
     .container    
       .navbar-header
@@ -38,31 +22,36 @@
       .collapse.navbar-collapse{:id => "bs-example-navbar-collapse-1"}
         %ul.nav.navbar-nav
           %li
-            = link_to "Aktualności", entries_path
+            = link_to t('nav.news'), entries_path
           %li
-            = link_to "Filmiki", videos_path
+            = link_to t('nav.videos'), videos_path
           %li
-            = link_to "Galeria", images_path
+            = link_to t('nav.gallery'), images_path
           %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Zapalniczka
+            = link_to t('nav.lighter'), '#', class: "dropdown-toggle", "data-toggle": "dropdown"
             %ul.dropdown-menu{:role => "menu"}
               %li
-                %a{:href => "#"} Budowa
+                = link_to t('nav.build'), '#'
               %li
-                %a{:href => "#"} Rodzaje
+                = link_to t('nav.types'), '#'
               %li
-                %a{:href => "#"} Historia
+                = link_to t('nav.history'), '#'
           %li
-            = link_to 'Tutoriale', tutorials_path
+            = link_to t('nav.tutorials'), tutorials_path
           %li
-            %a{href: "#{}"}
+            %a{href: "#", id: 'search-icon'}
               %i.fa.fa-search
-        %form.navbar-form.navbar-left{:role => "search"}
-          -# = form_tag(videos_path, :method => "get", id: "search-form") do
-          -#   = text_field_tag :search, params[:search], placeholder: "Search Posts"
-          -#   = submit_tag "Search"
-            -# %input#inputSuccess2.form-control{:type => "text"}/
-            -# %span.glyphicon.glyphicon-search.form-control-feedback
+          .navbar-form.navbar-left{ role: 'search', id: 'search-form'}
+            = form_for(:search, url: search_path, method: :get) do
+              = text_field_tag(:search, nil, class: 'form-control', id: 'search-field')
+              
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown
+            = link_to I18n.locale.upcase, '#', class: 'dropdown-toggle', "data-toggle": "dropdown"
+            %ul.dropdown-lang.dropdown-menu{role: "menu"}
+              - other_locales.each do |locale|
+                %li
+                  = link_to locale.upcase, locale: locale
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right
             %li.dropdown
@@ -75,17 +64,21 @@
                 %span.caret.red-icon
               %ul.dropdown-menu{:role => "menu"}
                 %li
-                  = link_to "Ustawienia", edit_user_registration_path
+                  = link_to edit_user_registration_path do
+                    %i.fa.fa-cog
+                    Ustawienia
                 %li
-                  = link_to "Dodaj filmik", new_video_path
+                  = link_to new_video_path do
+                    %i.fa.fa-plus-square
+                    Dodaj filmik
                 %li
-                  = link_to('Logout', destroy_user_session_path, :method => :delete)
+                  = link_to destroy_user_session_path, :method => :delete do
+                    %i.fa.fa-sign-out
+                    Logout
         - else
           .btn-group.navbar-right
             %a.btn.btn-warning.navbar-btn{:role=>"button", "data-toggle" => "modal", "data-target" => "#registration"} Zarejestruj się            
             %a.btn.btn-default.navbar-btn{:type => "button", "data-toggle" => "modal", "data-target" => "#login"} Zaloguj się
-
-
   .container.main
     = render "layouts/login_modal"
     = render "layouts/registration_modal" 

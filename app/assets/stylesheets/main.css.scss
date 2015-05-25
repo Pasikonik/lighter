@@ -44,4 +44,9 @@ a:active {
   -webkit-border-radius: 30px; /* Saf3+, Chrome */
   border-radius: 30px; /* Opera 10.5, IE 9 */
   /*-moz-border-radius: 30px;  Disabled for FF1+ */
-  }
+}
+
+#search-field {
+  width: 0px;
+  display: none;
+}

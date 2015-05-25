@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :vote, :add_comment]
+  before_action :set_video, only: [:show, :edit, :update, :destroy, :tags, :vote, :add_comment]
 
   def index 
     allow = ['created_at', 'score', 'views']
@@ -9,7 +9,7 @@ class VideosController < ApplicationController
     @videos = @videos.where(kind: params[:type]) if params[:type]
     @videos = @videos.tagged_with(params[:tag]) if params[:tag]
     @videos = @videos.order("#{params[:sort]} DESC") if allow.include?(params[:sort])
-
+    @videos = @videos.where("title LIKE ?", "%#{params[:search]}%") if params[:search]
     @videos = @videos.page(params[:page])
 
     @params = params.slice(:type, :sort, :tag) # prevent XSS attack
@@ -31,6 +31,24 @@ class VideosController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @video.update(video_params)
+      @video.tag_list = params[:tag_list]
+      @video.save
+      redirect_to video_path(@video)
+    else
+      redirect_to edit_video_path(@video)
+    end
+  end
+
+  def destroy
+    @video.destroy
+    redirect_to videos_path
+  end
+
   def show
     @video.increment!(:views)
     if Rating.exists?(user: current_user, video: @video)
@@ -40,6 +58,10 @@ class VideosController < ApplicationController
     end
     @comments = @video.comments
     @comment = Comment.new
+  end
+
+  def tags
+    render json: @video.tag_list.to_json
   end
 
   def vote
@@ -64,7 +86,7 @@ class VideosController < ApplicationController
     end
 
     def video_params
-      params.require(:video).permit(:title, :description, :source, :remote, :rate, :kind)
+      params.require(:video).permit(:title, :description, :source, :remote, :kind, :rate)
     end
 
     def reverse(scope)

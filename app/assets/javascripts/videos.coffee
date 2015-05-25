@@ -14,9 +14,18 @@ $ ->
   if stars > 0
     checkStars(stars)
 
-  $(".tm-input").tagsManager
-    hiddenTagListName: 'tag_list'
+  if location.pathname.match(/[0-9]+/) != null
+    idVideo = location.pathname.match(/[0-9]+/)[0]
+  if idVideo
+    $.get "/videos/#{idVideo}/tags", (data) ->
+      $(".tm-input").tagsManager
+        prefilled: data
+        hiddenTagListName: 'tag_list'
+  else
+    $(".tm-input").tagsManager
+      hiddenTagListName: 'tag_list'
 
+  
   # $("span[data-score]").hover ->
   #   for i in [1..5]
   #     $("span[data-score='#{i}']").text("☆")
@@ -35,11 +44,20 @@ $ ->
     checkStars(index)
     $('#score').load(path + " #score");
 
-  $("#comment_button").on 'click', ->
+  $("#comment-button").on 'click', ->    
+    setTimeout (->
+      $('#comments').load(location.pathname + " #comments")
+      $("#comment_comment").val('')
+      return
+    ), 50
+
+  $(".comment-delete").on 'click', (e) ->
+    e.preventDefault()
+    alert('heyko')
     setTimeout (->
       $('#comments').load(location.pathname + " #comments")
       return
-    ), 50
+    ), 50    
 
   sort = $('.sort').data('sort')
   if sort
@@ -59,3 +77,4 @@ $ ->
 
   $("a[href='#remote'").click ->
     $("input[name='video[source]'").val('')
+

@@ -1,8 +1,4 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
-jQuery ->
+$ ->
     
   $('.btn-to-upload').click ->
     $('#image_src').trigger('click')
@@ -23,11 +19,6 @@ jQuery ->
 
   $('#new_image').bind 'fileuploadstop', (e, data) ->
     location.reload()
-    # $("#images").load(location.pathname + " #images")
-    # setTimeout (->
-    #   $(".progress").css 'display', 'none'
-    #   return
-    # ), 3000
 
   $container = $('#masonry-container')
   $container.imagesLoaded ->

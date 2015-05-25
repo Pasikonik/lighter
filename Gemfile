@@ -42,6 +42,7 @@ gem 'jquery-fileupload-rails'
 gem 'masonry-rails'
 gem 'fancybox2-rails'
 
+gem 'rails-i18n'
 
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '~> 5.0'
