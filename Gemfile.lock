@@ -53,6 +53,7 @@ GEM
     byebug (5.0.0)
       columnize (= 0.9.0)
     callsite (0.0.11)
+    cancancan (1.10.1)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -241,6 +242,7 @@ DEPENDENCIES
   acts_as_commentable
   bootstrap-sass (~> 3.3.4)
   byebug
+  cancancan (~> 1.10)
   carrierwave
   carrierwave-video-thumbnailer
   coffee-rails (~> 4.1.0)

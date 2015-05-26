@@ -1,4 +1,5 @@
 class TutorialsController < ApplicationController
+  load_and_authorize_resource
   before_action :accordian_data, only: [:index, :show]
 
   def index

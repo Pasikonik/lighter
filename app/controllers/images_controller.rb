@@ -1,4 +1,6 @@
 class ImagesController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @images = Image.where(kind: 1).order('created_at DESC').page(params[:page])
     params[:page] ? @page = 1 + params[:page].to_i : @page = 1

@@ -30,7 +30,7 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'carrierwave-video-thumbnailer'
 gem 'mini_magick'
-
+gem 'cancancan', '~> 1.10'
 gem 'hirb'
 gem 'acts_as_commentable'
 gem 'acts-as-taggable-on'
