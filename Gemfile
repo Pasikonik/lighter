@@ -41,7 +41,7 @@ gem 'kaminari'
 gem 'jquery-fileupload-rails'
 gem 'masonry-rails'
 gem 'fancybox2-rails'
-
+gem 'activeadmin', github: 'activeadmin'
 gem 'rails-i18n'
 
 gem 'bootstrap-sass', '~> 3.3.4'

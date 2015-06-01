@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
   helper_method :other_locales
 
   before_action :set_locale
+
+  def authenticate_admin!
+    redirect_to new_user_session_path unless current_user.admin?
+  end
  
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale

@@ -2,9 +2,6 @@
   .thumb
     .text-center
       = link_to video_path(video.id) do
-        - if video.source?
-          = image_tag(video.source.thumb)
-        - if video.remote?
-          = image_tag "http://img.youtube.com/vi/#{video.remote}/0.jpg", width: 192
+        = image_tag video.thumb, width: 192
         .thumb-title
           = video.title.upcase
