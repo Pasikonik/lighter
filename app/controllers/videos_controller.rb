@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :edit, :update, :destroy, :tags, :vote, :add_comment]
+  before_action :set_video, except: [:index, :new, :create]
 
   def index 
     allow = ['created_at', 'score', 'views']
@@ -88,21 +88,4 @@ class VideosController < ApplicationController
     def video_params
       params.require(:video).permit(:title, :description, :source, :remote, :kind, :rate)
     end
-
-    def reverse(scope)
-      @per_page = Video.default_per_page
-      puts @per_page.to_s
-      total_count = scope.count
-      rest_count = total_count > @per_page ? (total_count % @per_page) : 0
-      @num_pages = total_count > @per_page ? (total_count / @per_page) : 1
-
-      if params[:page]
-        offset = params[:page].sub(/-.*/, '').to_i
-        current_page = @num_pages - (offset - 1) / @per_page
-        scope.page(current_page).per(@per_page).padding(rest_count)
-      else
-        scope.page(1).per(@per_page + rest_count)
-      end
-    end
-
 end
