@@ -1,0 +1,12 @@
+pl:
+  nav:
+    news: "Aktualności"
+    videos: "Filmiki"
+    gallery: "Galeria"
+    lighter: "Zapalniczka"
+    build: "Budowa"
+    types: "Rodzaje"
+    history: "Historia"
+    tutorials: "Tutoriale" 
+  home:
+    title: "Witaj w świecie zapalniczek"

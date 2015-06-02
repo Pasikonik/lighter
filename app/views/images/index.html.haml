@@ -1,10 +1,15 @@
+- if current_user.admin?
+  = render "images/new"
 
-= render "images/new"
+.text-center
+  .type{"data-type": params[:type]}
+    .btn-group
+      = link_to 'Zdjęcia', images_path, class: 'btn btn-default active', id: 'photos'
+      = link_to 'Grafika', images_path(type: 2), class: 'btn btn-default', id: 'graphics'
 
 %nav#page-nav
   = link_to "NEXT", images_path(page: @page), style: 'display: none'
 
--# #container.js-masonry{"data-masonry-options" => "{ \"columnWidth\": 220, \"itemSelector\": \".item\" }"}
 #masonry-container.transitions-enabled.centered.infinite-scroll.clearfix
   #images
     = render @images

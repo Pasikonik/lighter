@@ -1,7 +1,9 @@
 .row
   .col-md-8.col-md-offset-2
     = simple_form_for Image.new do |f|
+      = f.hidden_field :kind, value: params[:type] || 1
       = f.file_field :src, multiple: true, name: "image[src]", style: 'display: none;'
+      
 
     .text-center
       %button.btn.btn-default.btn-to-upload Select files to upload

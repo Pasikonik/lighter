@@ -38,3 +38,21 @@ a:active {
   background-color: #222222;
 }
 
+.avatar-frame,.avatar-frame img{
+  width: 20px;
+  height: 20px;
+  -webkit-border-radius: 30px; /* Saf3+, Chrome */
+  border-radius: 30px; /* Opera 10.5, IE 9 */
+  /*-moz-border-radius: 30px;  Disabled for FF1+ */
+}
+
+#search-field {
+  width: 0px;
+  display: none;
+}
+
+.admin-link {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "Times New Roman";
+}

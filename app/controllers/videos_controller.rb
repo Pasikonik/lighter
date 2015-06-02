@@ -1,21 +1,18 @@
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :vote, :add_comment]
+  before_action :set_video, only: [:show, :edit, :update, :destroy, :tags, :vote, :add_comment]
 
-  def index
-    @videos =  Video.page(params[:page])
-    
-    allow = ['ASC', 'DESC']
+  def index 
+    allow = ['created_at', 'score', 'views']
 
-    if allow.include?(params[:date])
-      @videos = Video.order("created_at #{params[:date]}").page(params[:page]) 
-    elsif allow.include?(params[:rate])
-      @videos = Video.order("score #{params[:rate]}").page(params[:page]) 
-    elsif allow.include?(params[:views])
-      @videos = Video.order("views #{params[:views]}").page(params[:page])
-    elsif params[:tag]
-      @videos = Video.tagged_with(params[:tag]).page(params[:page])
-    end
+    @videos = Video.all
     
+    @videos = @videos.where(kind: params[:type]) if params[:type]
+    @videos = @videos.tagged_with(params[:tag]) if params[:tag]
+    @videos = @videos.order("#{params[:sort]} DESC") if allow.include?(params[:sort])
+    @videos = @videos.where("title LIKE ?", "%#{params[:search]}%") if params[:search]
+    @videos = @videos.page(params[:page])
+
+    @params = params.slice(:type, :sort, :tag) # prevent XSS attack
   end
 
   def new
@@ -24,6 +21,7 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.new(video_params)
+    @video.remote.sub!(/.*v=/, '') if @video.remote?
     @video.user = current_user
     @video.tag_list = params[:tag_list]
     if @video.save
@@ -31,6 +29,24 @@ class VideosController < ApplicationController
     else
       redirect_to new_video_path, notice: 'Unfortunately action wasnt done'
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @video.update(video_params)
+      @video.tag_list = params[:tag_list]
+      @video.save
+      redirect_to video_path(@video)
+    else
+      redirect_to edit_video_path(@video)
+    end
+  end
+
+  def destroy
+    @video.destroy
+    redirect_to videos_path
   end
 
   def show
@@ -42,6 +58,10 @@ class VideosController < ApplicationController
     end
     @comments = @video.comments
     @comment = Comment.new
+  end
+
+  def tags
+    render json: @video.tag_list.to_json
   end
 
   def vote
@@ -66,7 +86,7 @@ class VideosController < ApplicationController
     end
 
     def video_params
-      params.require(:video).permit(:title, :description, :source, :rate)
+      params.require(:video).permit(:title, :description, :source, :remote, :kind, :rate)
     end
 
     def reverse(scope)

@@ -1,13 +1,25 @@
-.text-center.video-title 
-  = @video.title
+.col-md-8.col-md-offset-2
+  .owner-panel.text-center
+    - if can? :update, @video
+      = link_to edit_video_path(@video) do
+        %i.fa.fa-edit
+      = link_to @video, method: :delete, data: { confirm: "Are you sure" } do
+        %i.fa.fa-trash-o
+  .text-center.video-title 
+    = @video.title
 .text-center
-  = video_tag @video.source_url.to_s, width: 640, controls: true, autobuffer: true, class: "red-border"
-%br     
+  - if @video.source?
+    = video_tag @video.source_url.to_s, width: 640, controls: true, autobuffer: true, class: "red-border"
+  - if @video.remote?
+    .col-md-6.col-md-offset-3
+      .videoWrapper
+        %iframe{allowfullscreen: "", frameborder: "0", height: "315", src: "https://www.youtube.com/embed/" + @video.remote, width: "560", class: "red-border"}
+%br
 .row
   .col-md-2.col-md-offset-3.text-center
     %i.fa.fa-upload.fa-lg
     %br
-    = @video.user.email
+    = @video.user.login
   .col-md-2.text-center
     %i.fa.fa-eye.fa-lg
     %br
@@ -36,9 +48,14 @@
     #comments
       - if @video.comments.exists?
         - @comments.each do |comment|
-          .comment  
+          - if comment.user == current_user
+            = link_to comment, method: :delete, remote: true, class: 'comment-delete' do
+              %i.fa.fa-times-circle-o
+          .comment
             .comment-author
-              = comment.user.email
+              = comment.user.login
+            .pull-right
+              = comment.created_at.strftime("%H:%M %d-%m-%Y")
             .comment-body
               = comment.comment
           %br
@@ -47,4 +64,4 @@
   .col-md-6.col-md-offset-3      
     = simple_form_for @comment, url: add_comment_video_path, remote: true do |v|
       = v.input :comment, as: :text, label: 'new comment'
-      = v.button :submit, value: 'comment', id: 'comment_button'
+      = v.button :submit, value: 'comment', id: 'comment-button'

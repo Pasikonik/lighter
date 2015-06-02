@@ -1,13 +1,13 @@
 #= require jquery
-#= require fancybox
+#= require jquery.turbolinks
+#= require jquery_ujs
 #= require bootstrap-sprockets
 #= require jquery-fileupload/basic
-#= require jquery.turbolinks
 #= require masonry/masonry.min
 #= require masonry/modernizr-transitions
 #= require masonry/jquery.imagesloaded.min
 #= require masonry/jquery.infinitescroll.min
+#= require fancybox
 #= require tagmanager
-#= require jquery_ujs
 #= require turbolinks
 #= require_tree .

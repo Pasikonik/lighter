@@ -1,9 +1,5 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
-jQuery ->
-
+$ ->
+    
   $('.btn-to-upload').click ->
     $('#image_src').trigger('click')
 
@@ -23,11 +19,6 @@ jQuery ->
 
   $('#new_image').bind 'fileuploadstop', (e, data) ->
     location.reload()
-    # $("#images").load(location.pathname + " #images")
-    # setTimeout (->
-    #   $(".progress").css 'display', 'none'
-    #   return
-    # ), 3000
 
   $container = $('#masonry-container')
   $container.imagesLoaded ->
@@ -37,10 +28,7 @@ jQuery ->
       isAnimated: !Modernizr.csstransitions
       isFitWidth: true
 
-  $('a.fancybox').fancybox ->
-
-
-
+  $('a.fancybox').fancybox()
 
   $container.infinitescroll {
     navSelector: '#page-nav'
@@ -49,16 +37,17 @@ jQuery ->
     animate: false
     loading:
       speed: 'fast'
-      finishedMsg: 'There are all'
       msg: $('<i></i>')
   }, (newElements) ->
     $newElems = $(newElements).css(opacity: 0)
     $newElems.imagesLoaded ->
       $newElems.animate opacity: 1
       $container.masonry 'appended', $newElems, true
-      return
-    return
-  return
+
+  type = $('.type').data('type')
+  if type
+    $("#photos").removeClass 'active'
+    $("#graphics").addClass 'active'
 
 
 

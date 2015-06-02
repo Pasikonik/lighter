@@ -1,6 +1,15 @@
+.col-md-2-col-md-offset-6
+  .text-center
+    %button.btn.btn-default{"data-toggle": "collapse", 
+                            "aria-expanded": false, 
+                            "aria-controls": "new_entry",
+                            href: "#new_entry"} New
+  %br
+
 .col-md-8.col-md-offset-2
-  = simple_form_for @entry do |e|
-    = e.input :title, label: false, placeholder: 'Title'
-    = e.input :body, label: false, placeholder: 'Body', as: :text
-    = e.file_field :thumbnail
-    = e.button :submit, class: "center-block"
+  #new_entry.collapse{"aria-expanded": true}
+    = simple_form_for @entry do |e|
+      = e.input :title, label: false, placeholder: 'Title'
+      = e.input :body, label: false, placeholder: 'Body', as: :text
+      = e.file_field :thumbnail
+      = e.button :submit, class: "center-block"

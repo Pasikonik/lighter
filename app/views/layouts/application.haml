@@ -1,11 +1,11 @@
 !!!
-%html{:lang => "pl_PL"}
+%html{lang: "pl_PL"}
   %head
-    %meta{:charset => "utf-8"}
+    %meta{charset: "utf-8"}
     %title Lighter.pl
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    %link{:href=>"https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", :rel=>"stylesheet"}
+    %link{href: "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", rel: "stylesheet"}
     = csrf_meta_tags
 %body
   %nav.navbar.navbar-default.navbar-inverse.navbar-static-top{:role=>"navigation"}
@@ -22,45 +22,66 @@
       .collapse.navbar-collapse{:id => "bs-example-navbar-collapse-1"}
         %ul.nav.navbar-nav
           %li
-            = link_to "Aktualności", entries_path
+            = link_to t('nav.news'), entries_path
           %li
-            = link_to "Filmiki", videos_path
+            = link_to t('nav.videos'), videos_path
           %li
-            = link_to "Galeria", images_path
+            = link_to t('nav.gallery'), images_path
           %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Zapalniczka
+            = link_to t('nav.lighter'), '#', class: "dropdown-toggle", "data-toggle": "dropdown"
             %ul.dropdown-menu{:role => "menu"}
               %li
-                %a{:href => "#"} Budowa
+                = link_to t('nav.build'), '#'
               %li
-                %a{:href => "#"} Rodzaje
+                = link_to t('nav.types'), '#'
               %li
-                %a{:href => "#"} Historia
+                = link_to t('nav.history'), '#'
           %li
-            %a{:href => "#"} Tutoriale
-        %form.navbar-form.navbar-left{:role => "search"}
-          .form-group
-            %input.form-control{:type => "text", :placeholder => "Szukaj"}
+            = link_to t('nav.tutorials'), tutorials_path
+          %li
+            %a{href: "#", id: 'search-icon'}
+              %i.fa.fa-search
+          .navbar-form.navbar-left{ role: 'search', id: 'search-form'}
+            = form_for(:search, url: search_path, method: :get) do
+              = text_field_tag(:search, nil, class: 'form-control', id: 'search-field')
+        - if current_user.admin?
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              = link_to "A", admin_dashboard_path, class: 'admin-link'
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown
+            = link_to I18n.locale.upcase, '#', class: 'dropdown-toggle', "data-toggle": "dropdown"
+            %ul.dropdown-lang.dropdown-menu{role: "menu"}
+              - other_locales.each do |locale|
+                %li
+                  = link_to locale.upcase, locale: locale
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                %i.fa.fa-user
-                = current_user.email
+                - if current_user.avatar?
+                  = image_tag current_user.avatar_url, size: "20x20", class: 'avatar-frame'
+                - else
+                  %i.fa.fa-user
+                = current_user.login
                 %span.caret.red-icon
               %ul.dropdown-menu{:role => "menu"}
                 %li
-                  %a{:href => "#"} Ustawienia
+                  = link_to edit_user_registration_path do
+                    %i.fa.fa-cog
+                    Ustawienia
                 %li
-                  = link_to "Dodaj filmik", new_video_path
+                  = link_to new_video_path do
+                    %i.fa.fa-plus-square
+                    Dodaj filmik
                 %li
-                  = link_to('Logout', destroy_user_session_path, :method => :delete)
+                  = link_to destroy_user_session_path, :method => :delete do
+                    %i.fa.fa-sign-out
+                    Logout
         - else
           .btn-group.navbar-right
             %a.btn.btn-warning.navbar-btn{:role=>"button", "data-toggle" => "modal", "data-target" => "#registration"} Zarejestruj się            
             %a.btn.btn-default.navbar-btn{:type => "button", "data-toggle" => "modal", "data-target" => "#login"} Zaloguj się
-
-
   .container.main
     = render "layouts/login_modal"
     = render "layouts/registration_modal" 

@@ -6,10 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# if User.where(admin: true).count == 0
-#   a = User.first_or_create! do |a|
-#     a.email = 'admin@z.com'
-#     a.password = 'zapalnik123'
-#     a.admin true
-#   end
-# end
+users = User.create(email: 'admin@z.com',
+                    password: 'zapalnik123',
+                    password_confirmation: 'zapalnik123',
+                    admin: true)

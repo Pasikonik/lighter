@@ -1,13 +1,10 @@
-%h1.text-center
-  %i.fa.fa-newspaper-o.fa-fw
-  %b Aktualności
-  %i.fa.fa-newspaper-o.fa-fw
 .row
-  - if current_user.admin?
+  - if user_signed_in? && current_user.admin?
     = render "/entries/new_entry"
 .row
   - if Entry.count == 0
-    Nie ma żadnych aktualności
+    %h3.text-center
+      Nie ma żadnych aktualności
   - else
     - @entries.each do |e|
       .row
@@ -21,7 +18,7 @@
                 = e.title
               .entry-info
                 autor:
-                = current_user.email
+                = e.user.login
                 .pull-right
                   = e.created_at.strftime("%H:%M %d-%m-%Y")
               .entry-text

@@ -30,18 +30,19 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'carrierwave-video-thumbnailer'
 gem 'mini_magick'
-
+gem 'cancancan', '~> 1.10'
 gem 'hirb'
 gem 'acts_as_commentable'
 gem 'acts-as-taggable-on'
 gem 'tagmanager-rails'
 gem 'jquery-turbolinks'
-
+gem 'omniauth-facebook'
 gem 'kaminari'
 gem 'jquery-fileupload-rails'
 gem 'masonry-rails'
 gem 'fancybox2-rails'
-
+gem 'activeadmin', github: 'activeadmin'
+gem 'rails-i18n'
 
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '~> 5.0'
