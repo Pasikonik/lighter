@@ -1,4 +1,9 @@
 ActiveAdmin.register Video do
+  permit_params :title, :description, :kind, :score, :source, :remote
+  scope :all, default: true
+  scope("Trick") { |scope| scope.where(kind: 1) }
+  scope("Presentation") { |scope| scope.where(kind: 2) }
+  scope("Rated") { |scope| scope.where("score > 0") }
 
   index do
     selectable_column
@@ -8,22 +13,17 @@ ActiveAdmin.register Video do
       image_tag video.thumb, width: 192
     end
     column :kind do |video|
-      video.kind == 1 ? "Presentation" : "Trick"
+      if video.kind == 1 
+        "Trick"
+      elsif video.kind == 2
+        "Presentation"
+      else
+        "unknow"
+      end 
     end
+    column :score
+    column :views
     actions
   end
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if resource.something?
-#   permitted
-# end
-
 
 end

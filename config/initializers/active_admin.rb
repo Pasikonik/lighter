@@ -19,7 +19,7 @@ ActiveAdmin.setup do |config|
   # config.site_title_image = "logo.png"
   config.namespace :admin do |admin|
     admin.build_menu :utility_navigation do |menu|
-      menu.add label: "Return", url: "/"
+      menu.add label: "Back to home", url: "/"
     end
   end
   # == Default Namespace
