@@ -21,7 +21,7 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.new(video_params)
-    @video.remote.sub!(/.*v=/, '') if @video.remote?
+    @video.remote.sub!(/.*watch\?v=/, '') if @video.remote?
     @video.user = current_user
     @video.tag_list = params[:tag_list]
     if @video.save

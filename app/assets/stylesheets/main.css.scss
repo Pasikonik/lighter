@@ -25,7 +25,7 @@ a:active {
 }
 
 .main {
-  margin-bottom: 40px;
+  padding-bottom: 50px;
 }
 
 .footer {
@@ -38,12 +38,16 @@ a:active {
   background-color: #222222;
 }
 
-.avatar-frame,.avatar-frame img{
-  width: 20px;
-  height: 20px;
+.avatar-frame, .avatar-frame img{
+  position: absolute;
+  z-index: 1;
+  left: -28px;
+  top: 6px;
+  width: 38px;
+  height: 38px;
   -webkit-border-radius: 30px; /* Saf3+, Chrome */
   border-radius: 30px; /* Opera 10.5, IE 9 */
-  /*-moz-border-radius: 30px;  Disabled for FF1+ */
+  -moz-border-radius: 30px; /* FF1+ */
 }
 
 #search-field {
@@ -55,4 +59,12 @@ a:active {
   font-size: 28px;
   font-weight: bold;
   font-family: "Times New Roman";
+}
+
+.dropdown-menu.dropdown-lang {
+    min-width: 30px !important;
+}
+
+.pagi {
+  
 }
