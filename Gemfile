@@ -38,6 +38,9 @@ group :development, :test do
 
   gem 'web-console', '~> 2.0'
 
+  gem 'guard'
+  gem 'guard-minitest'
+
   gem 'meta_request'
   gem 'spring'
   gem 'factory_girl_rails'
@@ -46,4 +49,5 @@ end
 group :test do
   gem 'database_cleaner', require: false
   gem 'faker'
+  gem 'minitest-reporters'
 end

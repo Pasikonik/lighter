@@ -6,6 +6,10 @@ class EntriesController < ApplicationController
     @entry = Entry.new
   end
 
+  def new
+    @entry = Entry.new
+  end
+
   def create
     @entry = Entry.new(entry_params)
     @entry.user = current_user

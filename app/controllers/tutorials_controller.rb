@@ -1,6 +1,5 @@
 class TutorialsController < ApplicationController
   load_and_authorize_resource
-  before_action :accordian_data, only: [:index, :show]
 
   def index
   end
@@ -23,14 +22,6 @@ class TutorialsController < ApplicationController
   end
 
   private
-
-    def accordian_data
-      @tutorialOne = Tutorial.where(level: 1)
-      @tutorialTwo = Tutorial.where(level: 2)
-      @tutorialThree = Tutorial.where(level: 3)
-      @tutorialFour = Tutorial.where(level: 4)
-      @tutorialFive = Tutorial.where(level: 5)
-    end
 
     def tutorial_params
       params.require(:tutorial).permit(:title, :video, :level)

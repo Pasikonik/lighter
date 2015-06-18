@@ -10,9 +10,6 @@ class ImagesController < ApplicationController
     end
   end
 
-  def new
-  end
-
   def create
     @image = Image.create(image_params)    
     render nothing: true
