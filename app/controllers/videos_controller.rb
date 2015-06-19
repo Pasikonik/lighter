@@ -25,7 +25,7 @@ class VideosController < ApplicationController
     @video.user = current_user
     @video.tag_list = params[:tag_list]
     if @video.save
-      redirect_to videos_path, notice: 'Video was successfully created'
+      redirect_to video_path(@video), notice: 'Video was successfully created'
     else
       redirect_to new_video_path, notice: 'Unfortunately action wasnt done'
     end

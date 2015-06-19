@@ -12,6 +12,13 @@ class TutorialsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'should get new' do
+    sign_in FactoryGirl.create(:admin)
+
+    get :new
+    assert_response :success
+  end
+
   test 'should create tutorial' do
     sign_in FactoryGirl.create(:admin)
 
@@ -20,6 +27,14 @@ class TutorialsControllerTest < ActionController::TestCase
                                 video: Rack::Test::UploadedFile.new("test/fixtures/files/test.mp4", "video/mp4"),
                                 level: Random.rand(1..5) }
     end
+  end
+
+  test 'shouldnt create tutorial without attributes' do
+    exception = assert_raise(ActionController::ParameterMissing) {
+      post :create, tutorial: {}
+    }
+
+    assert_equal 'param is missing or the value is empty: tutorial', exception.message
   end
 
 
