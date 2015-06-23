@@ -65,16 +65,4 @@ class VideosControllerTest < ActionController::TestCase
     assert_redirected_to videos_path
   end
 
-  # test 'should rate video' do
-  #   get :show, id: @video
-  #   post :vote, rate: 4
-  #   assert @video.score == 4
-  # end
-
-  # test 'should add comment' do
-  #   get :show, id: @video
-  #   post :post_comment, comment: "comment"
-  #   assert @video.comments.last == "comment"
-  # end
-
 end

@@ -72,9 +72,9 @@ $ ->
     $("##{tag}-tag").addClass 'chosen-tag'
 
 
-  $("a[href='#local'").click ->
+  $("a[href='#local']").click ->
     $("input[name='video[remote]'").val('')
 
-  $("a[href='#remote'").click ->
+  $("a[href='#remote']").click ->
     $("input[name='video[source]'").val('')
 

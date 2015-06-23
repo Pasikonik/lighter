@@ -33,6 +33,8 @@ gem 'fancybox2-rails'
 gem 'activeadmin', github: 'activeadmin'
 gem 'rails-i18n'
 
+
+
 group :development, :test do
   gem 'byebug'
 
@@ -44,10 +46,15 @@ group :development, :test do
   gem 'meta_request'
   gem 'spring'
   gem 'factory_girl_rails'
+
+  gem 'rspec-rails'
+  gem 'guard-rspec', require: false
 end
 
 group :test do
   gem 'database_cleaner', require: false
   gem 'faker'
   gem 'minitest-reporters'
+  gem 'capybara'
+  gem 'poltergeist'
 end
