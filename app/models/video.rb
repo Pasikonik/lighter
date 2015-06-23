@@ -5,7 +5,7 @@ class Video < ActiveRecord::Base
   paginates_per 12
   belongs_to :user
   validates :title, :kind, presence: true
-  validates_numericality_of :kind, less_than_or_equal_to: 2, greater_than: 0
+  validates_numericality_of :kind, less_than_or_equal_to: 2, greater_than: 0, message: 'must be specify'
   validates :remote, format: { with: /\A[a-zA-Z0-9_-]+\z/ }, if: ->(video){video.remote.present?}
   validate :wrong_video_source
 
@@ -15,7 +15,7 @@ class Video < ActiveRecord::Base
     elsif self.remote?
       "http://img.youtube.com/vi/#{self.remote}/0.jpg"
     else
-      "http://brzezia.pl/images/znak-zapytania.png"
+      'http://brzezia.pl/images/znak-zapytania.png'
     end
   end
 
@@ -23,7 +23,7 @@ class Video < ActiveRecord::Base
 
     def wrong_video_source
       unless source.blank? ^ remote.blank?
-        errors.add(:source, "Specify correctly a source of video")
+        errors.add(:source, 'must be specify corectly')
       end
     end
 end

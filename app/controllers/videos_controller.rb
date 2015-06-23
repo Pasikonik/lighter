@@ -27,7 +27,7 @@ class VideosController < ApplicationController
     if @video.save
       redirect_to video_path(@video), notice: 'Video was successfully created'
     else
-      redirect_to new_video_path, notice: 'Unfortunately action wasnt done'
+      render :new
     end
   end
 

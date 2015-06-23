@@ -1,18 +1,25 @@
 .col-md-8.col-md-offset-2
+  - if @video.errors.any? 
+    %ul.alert.alert-danger
+      Please review the problems below:
+      - @video.errors.full_messages.each do |msg|
+        %li.listing-errors= msg
+
   = simple_form_for @video do |f|
-    = f.input :title, label: false, placeholder: 'Title'
-    = f.input :description, label: false, placeholder: 'Description', as: :text, input_html: {rows: 4}
-    = f.input :tag_list, label: false, placeholder: 'Tags', input_html: { class: 'tm-input' }
-    = f.input :kind, collection: [['Tricks', 1], ['Presentation', 2]], label: false, prompt: 'Select type'
-    .tab-panel
-      %ul.nav.nav-tabs{role: 'tablist'}
-        %li.active{role: 'presentation'}
-          %a{href: '#local', "aria-controls": "local", role: "tab", "data-toggle": "tab"} plik lokalny
-        %li{role: 'presentation'}
-          %a{href: '#remote', "aria-controls": "remote", role: "tab", "data-toggle": "tab"} youtube
-      .tab-content
-        .tab-pane.content-tab.active{role: 'tabpannel', id: 'local'}
-          = f.file_field :source
-        .tab-pane.content-tab{role: 'tabpannel', id: 'remote'}
-          = f.input :remote, label: false, placeholder: 'Youtube'
-    = f.button :submit, class: "center-block"
+    .inputs
+      = f.input :title, label: false, placeholder: 'Title'
+      = f.input :description, label: false, placeholder: 'Description', as: :text, input_html: {rows: 4}
+      = f.input :tag_list, label: false, placeholder: 'Tags', input_html: { class: 'tm-input' }
+      = f.input :kind, collection: [['Tricks', 1], ['Presentation', 2]], label: false, prompt: 'Select type'
+      .tab-panel
+        %ul.nav.nav-tabs{role: 'tablist'}
+          %li.active{role: 'presentation'}
+            %a{href: '#local', "aria-controls": "local", role: "tab", "data-toggle": "tab"} plik lokalny
+          %li{role: 'presentation'}
+            %a{href: '#remote', "aria-controls": "remote", role: "tab", "data-toggle": "tab"} youtube
+        .tab-content
+          .tab-pane.content-tab.active{role: 'tabpannel', id: 'local'}
+            = f.file_field :source
+          .tab-pane.content-tab{role: 'tabpannel', id: 'remote'}
+            = f.input :remote, label: false, placeholder: 'Youtube'
+      = f.button :submit, class: "center-block"

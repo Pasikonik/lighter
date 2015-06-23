@@ -85,8 +85,9 @@
   .container.main
     = render "layouts/login_modal"
     = render "layouts/registration_modal" 
-    - flash.each do |name, msg|
-      = content_tag :div, msg, class: name
+    - flash.each do |key, value|
+      %div{class: flash_class(key)}
+        = value
     = yield
   .footer
     .container
