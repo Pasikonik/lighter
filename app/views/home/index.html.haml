@@ -7,5 +7,17 @@
     .col-md-8
       %p 
         Jest to strona poświęcona wszelako pojętym zapalniczkom. Treści jakie są zamieszczone na stronie to w głównej mierze filmiki obrazujące tricki wykorzystujące zapalniczki oraz prezentacje ciekawych modeli zapalniczek. Dodatkowo dostępna jest również galeria która zawiera zdjęcia autentycznych zapalniczek jak i też różnego rodzaju grafik. Sekcja która będzie ciągle rozwijana to Tutoriale gdzie będą umieszczane filmiki instruktarzowe jak wykonywać konkretne tricki.
-
+.row
+  .well.col-md-2.col-md-offset-2.text-center
+    = image_tag 'videos.png'
+    %h3= t('nav.videos')
+    %h4= @videoCounter
+  .well.col-md-2.col-md-offset-1.text-center
+    = image_tag 'images.png'
+    %h3= t('nav.gallery')
+    %h4= @imageCounter
+  .well.col-md-2.col-md-offset-1.text-center
+    = image_tag 'tutorials.png'
+    %h3= t('nav.tutorials')
+    %h4= @tutorialCounter
 
