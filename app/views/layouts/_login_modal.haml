@@ -3,7 +3,7 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal"} ×
-        %h3.text-center Logowanie
+        %h3.text-center= t('basic.login')
       .modal-body
         - if alert
           %p.alert.alert-danger= alert
@@ -12,7 +12,7 @@
             = f.input :login, required: false, input_html: { id: 'login_field' }
             = f.input :password, required: false
             = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-            = f.button :submit, 'Zaloguj', class: 'btn btn-lg btn-success center-block'
+            = f.button :submit, t('basic.sing_in'), class: 'btn btn-lg btn-success center-block'
         %br
         .text-center          
-          = button_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), class: 'btn btn-primary'
+          = button_to t('basic.sing_in_with_fb'), user_omniauth_authorize_path(:facebook), class: 'btn btn-primary'

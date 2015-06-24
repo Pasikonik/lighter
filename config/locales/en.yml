@@ -1,4 +1,14 @@
 en:
+  basic:
+    sing_in: "Sign in"
+    sing_up: "Sign up"
+    sing_in_with_fb: "Sign in with Facebook"
+    login: "Login"
+    registration: "Registration"
+  profil:
+    settings: "Settings"
+    add_video: "Add video"
+    logout: "Logout"
   nav:
     news: "News"
     videos: "Videos"
@@ -9,4 +19,31 @@ en:
     history: "History"
     tutorials: "Tutorials" 
   home:
-    title: "Hello in world of lighters"
+    index:
+      title: "Hello in world of lighters"
+      paragraph: "The page is devoted to the topic of lighters. The content is presented in a form of videos, gallery or tutorials which can teach you how to do lighter tricks. Have a good fun!"
+  entries:
+    index:
+      author: "author"
+  videos:
+    index:
+      type: "Type"
+      tricks: "Tricks"
+      presentation: "Presentation"
+      sort: "Sort"
+      date: "Date"
+      rate: "Rate"
+      views: "Views"
+      tags: "Tags"
+    show:
+      new_comment: "New comment"
+      comment: "comment"
+  images:
+    index:
+      photos: "Photos"
+      graphics: "Graphics"
+  tutorials:
+    level: "Level"
+    index:
+      title: "School of tricks"
+      paragraph: "Here you learn a tricks using lighter"

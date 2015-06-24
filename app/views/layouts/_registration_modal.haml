@@ -3,7 +3,7 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal"} ×
-        %h3.text-center Rejestracja
+        %h3.text-center= t('basic.registration')
       .modal-body
         - if alert
           %p.alert.alert-danger= alert
@@ -13,4 +13,4 @@
             = f.input :email, autofocus: true, input_html: { id: 'reg_field' }
             = f.input :password
             = f.input :password_confirmation
-            = f.button :submit, 'Zarejestruj', class: 'btn btn-success btn-lg center-block'
+            = f.button :submit, t('basic.sing_up'), class: 'btn btn-success btn-lg center-block'

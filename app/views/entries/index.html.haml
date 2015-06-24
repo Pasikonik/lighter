@@ -17,7 +17,7 @@
                 %i.fa.fa-square.red-icon
                 = e.title
               .entry-info
-                autor:
+                = t('.author') + ':'
                 = e.user.login
                 .pull-right
                   = e.created_at.strftime("%H:%M %d-%m-%Y")

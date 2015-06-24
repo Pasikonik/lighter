@@ -63,5 +63,5 @@
   .row
     .col-md-6.col-md-offset-3      
       = simple_form_for @comment, url: add_comment_video_path, remote: true do |v|
-        = v.input :comment, as: :text, label: 'new comment'
-        = v.button :submit, value: 'comment', id: 'comment-button'
+        = v.input :comment, as: :text, label: t('.new_comment')
+        = v.button :submit, value: t('.comment'), id: 'comment-button'

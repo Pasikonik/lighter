@@ -1,12 +1,12 @@
 .jumbotron
   .row
-    %h1.text-center= t('home.title')
-  .row
     .col-md-3
-      =image_tag "zapalniczka_zippo.png"
-    .col-md-8
-      %p 
-        Jest to strona poświęcona wszelako pojętym zapalniczkom. Treści jakie są zamieszczone na stronie to w głównej mierze filmiki obrazujące tricki wykorzystujące zapalniczki oraz prezentacje ciekawych modeli zapalniczek. Dodatkowo dostępna jest również galeria która zawiera zdjęcia autentycznych zapalniczek jak i też różnego rodzaju grafik. Sekcja która będzie ciągle rozwijana to Tutoriale gdzie będą umieszczane filmiki instruktarzowe jak wykonywać konkretne tricki.
+      = image_tag "lighter_graphic.png"
+    .col-md-9
+      %h1.text-center= t('.title')
+      %p= t('.paragraph')
+      
+
 .row
   .well.col-md-2.col-md-offset-2.text-center
     = image_tag 'videos.png'
@@ -20,4 +20,3 @@
     = image_tag 'tutorials.png'
     %h3= t('nav.tutorials')
     %h4= @tutorialCounter
-

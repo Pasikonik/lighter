@@ -1,4 +1,14 @@
 pl:
+  basic:
+    sing_in: "Zaloguj"
+    sing_in_with_fb: "Zaloguj przez Facebook"
+    sing_up: "Zarejestruj"
+    login: "Logowanie"
+    registration: "Rejestracja"
+  profil:
+    settings: "Ustawienia"
+    add_video: "Dodaj filmik"
+    logout: "Wyloguj"
   nav:
     news: "Aktualności"
     videos: "Filmiki"
@@ -9,4 +19,31 @@ pl:
     history: "Historia"
     tutorials: "Tutoriale" 
   home:
-    title: "Witaj w świecie zapalniczek"
+    index:
+      title: "Witaj w świecie zapalniczek"
+      paragraph: "Jest to strona poświęcona wszelako pojętym zapalniczkom. Treści są prezentowane w postaci filmików, galerii oraz tutoriali w którzych można się nauczyć trików z wykorzystaniem zapalniczki. Życzę miłej zabawy!"
+  entries:
+    index:
+      author: "autor"
+  videos:
+    index:
+      type: "Typ"
+      tricks: "Triki"
+      presentation: "Prezentacje"
+      sort: "Sortowanie"
+      date: "Data"
+      rate: "Ocena"
+      views: "Wyświetlenia"
+      tags: "Tagi"
+    show:
+      new_comment: "Nowy komentarz"
+      comment: "Komentuj"
+  images:
+    index:
+      photos: "Zdjęcia"
+      graphics: "Grafiki"
+  tutorials:
+    level: "Poziom"
+    index:
+      title: "Szkoła trików"
+      paragraph: "Tutaj nauczysz się trików wykorzystując zapalniczkę"
