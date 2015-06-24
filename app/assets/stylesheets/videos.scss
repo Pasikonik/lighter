@@ -79,8 +79,20 @@
   margin-bottom: 10px;
 }
 
+.little-box {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.tags {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
 .tag {
-  // margin: 10px;
+  font-size: 15px;
+  display: inline-block;
+  margin-bottom: 5px;
   padding: 2px 8px 2px 8px;
   border: solid 1px;
   border-radius: 3px;

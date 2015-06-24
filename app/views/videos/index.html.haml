@@ -13,8 +13,8 @@
           = link_to 'wyświetlenia', @params.merge(sort: "views"), id: 'views', class: 'btn btn-default'
       .tags
         %h2.text-center.tagg{"data-tag": params[:tag]} Tagi
-        - ActsAsTaggableOn::Tag.most_used(10).each do |tag|
-          %h4.text-center
+        .text-center
+          - ActsAsTaggableOn::Tag.most_used(20).each do |tag|
             = link_to tag.name, @params.merge(tag: tag.name), class: 'tag', id: "#{tag.name}-tag"
   .col-md-8
     = render @videos
