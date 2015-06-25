@@ -9,7 +9,7 @@ class VideosController < ApplicationController
     @videos = @videos.where(kind: params[:type]) if params[:type]
     @videos = @videos.tagged_with(params[:tag]) if params[:tag]
     @videos = @videos.order("#{params[:sort]} DESC") if allow.include?(params[:sort])
-    @videos = @videos.where("title LIKE ?", "%#{params[:search]}%") if params[:search]
+    @videos = Video.where("title LIKE ?", "%#{params[:search]}%") if params[:search]
     @videos = @videos.page(params[:page])
 
     @params = params.slice(:type, :sort, :tag) # prevent XSS attack
@@ -75,7 +75,8 @@ class VideosController < ApplicationController
   end
 
   def add_comment
-    @video.comments.create(comment: params[:comment][:comment], user: current_user)
+    @video.comments.create(comment: params[:comment][:comment], 
+                              user: current_user)
     render nothing: true
   end
 
