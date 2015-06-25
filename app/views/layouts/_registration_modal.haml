@@ -3,21 +3,14 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal"} ×
-        %h3.text-center Rejestracja
+        %h3.text-center= t('basic.registration')
       .modal-body
-        - if notice
-          %p.alert.alert-success= notice
         - if alert
           %p.alert.alert-danger= alert
         = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
           = f.error_notification
           .inputs
-            = f.input :email, autofocus: true
+            = f.input :email, autofocus: true, input_html: { id: 'reg_field' }
             = f.input :password
             = f.input :password_confirmation
-            = f.button :submit, "Zarejestruj", :class => 'btn btn-success btn-lg center-block'
-
-:javascript
-  $('#registration').on('shown.bs.modal', function () {
-    $('#user_email').focus()
-  })
+            = f.button :submit, t('basic.sing_up'), class: 'btn btn-success btn-lg center-block'

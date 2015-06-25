@@ -1,23 +1,54 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  time:
+    formats:
+      default: "%I:%M %p %d-%m-%Y"
+  basic:
+    sing_in: "Sign in"
+    sing_up: "Sign up"
+    sing_in_with_fb: "Sign in with Facebook"
+    login: "Login"
+    registration: "Registration"
+  profil:
+    settings: "Settings"
+    add_video: "Add video"
+    logout: "Logout"
+  nav:
+    news: "News"
+    videos: "Videos"
+    gallery: "Gallery"
+    lighter: "Lighter"
+    build: "Construction"
+    types: "Types"
+    history: "History"
+    tutorials: "Tutorials" 
+  home:
+    index:
+      title: "Hello in world of lighters"
+      paragraph: "The page is devoted to the topic of lighters. The content is presented in a form of videos, gallery or tutorials which can teach you how to do lighter tricks. Have a good fun!"
+  entries:
+    index:
+      author: "author"
+  videos:
+    notice: "Video was successfully created"
+    local_file: "Local file"
+    index:
+      type: "Type"
+      tricks: "Tricks"
+      presentation: "Presentation"
+      sort: "Sort"
+      date: "Date"
+      rate: "Rate"
+      views: "Views"
+      tags: "Tags"
+    show:
+      new_comment: "New comment"
+      comment: "comment"
+  images:
+    index:
+      photos: "Photos"
+      graphics: "Graphics"
+  tutorials:
+    level: "Level"
+    index:
+      title: "School of tricks"
+      paragraph: "Here you learn a tricks using lighter"

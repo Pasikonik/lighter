@@ -3,20 +3,16 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal"} ×
-        %h3.text-center Logowanie
+        %h3.text-center= t('basic.login')
       .modal-body
-        - if notice
-          %p.alert.alert-success= notice
         - if alert
           %p.alert.alert-danger= alert
         = simple_form_for(:user, :url => user_session_path) do |f|
           .inputs
-            = f.input :email, :required => false, :autofocus => true
-            = f.input :password, :required => false
-            = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
-            = f.button :submit, "Zaloguj", :class => 'btn btn-lg btn-success center-block'
-
-:javascript
-  $('#login').on('shown.bs.modal', function () {
-    $('#user_email').focus()
-  })
+            = f.input :login, required: false, input_html: { id: 'login_field' }
+            = f.input :password, required: false
+            = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+            = f.button :submit, t('basic.sing_in'), class: 'btn btn-lg btn-success center-block'
+        %br
+        .text-center          
+          = button_to t('basic.sing_in_with_fb'), user_omniauth_authorize_path(:facebook), class: 'btn btn-primary'

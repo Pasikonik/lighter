@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507095820) do
+ActiveRecord::Schema.define(version: 20150601160124) do
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "comments", force: :cascade do |t|
     t.string   "title",            limit: 50, default: ""
@@ -41,7 +56,7 @@ ActiveRecord::Schema.define(version: 20150507095820) do
 
   create_table "images", force: :cascade do |t|
     t.string   "src"
-    t.integer  "type"
+    t.integer  "kind"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -77,6 +92,14 @@ ActiveRecord::Schema.define(version: 20150507095820) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
+  create_table "tutorials", force: :cascade do |t|
+    t.string   "title"
+    t.string   "video"
+    t.integer  "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -91,10 +114,15 @@ ActiveRecord::Schema.define(version: 20150507095820) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                  default: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "username"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
   create_table "videos", force: :cascade do |t|
     t.string   "title"
@@ -104,9 +132,10 @@ ActiveRecord::Schema.define(version: 20150507095820) do
     t.string   "source"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.integer  "type"
+    t.integer  "kind"
     t.integer  "views",       default: 0
     t.float    "score",       default: 0.0
+    t.string   "remote"
   end
 
   add_index "videos", ["user_id"], name: "index_videos_on_user_id"

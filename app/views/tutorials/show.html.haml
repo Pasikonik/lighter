@@ -1,0 +1,9 @@
+.row
+  .col-md-3.col-md-offset-1
+    = render 'accordion'
+  .col-md-7.tuto
+    .text-center
+      %h2= @tutorial.title
+      %br
+      = video_tag @tutorial.video_url.to_s, controls: true
+      
