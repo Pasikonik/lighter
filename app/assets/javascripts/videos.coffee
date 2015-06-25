@@ -51,13 +51,11 @@ $ ->
       return
     ), 50
 
-  $(".comment-delete").on 'click', (e) ->
-    e.preventDefault()
-    alert('heyko')
+  $(".comment-delete").on 'click', ->
     setTimeout (->
       $('#comments').load(location.pathname + " #comments")
       return
-    ), 50    
+    ), 50
 
   sort = $('.sort').data('sort')
   if sort

@@ -55,7 +55,7 @@
             .comment-author
               = comment.user.login
             .pull-right
-              = comment.created_at.strftime("%H:%M %d-%m-%Y")
+              = l comment.created_at
             .comment-body
               = comment.comment
           %br

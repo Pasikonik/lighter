@@ -25,7 +25,7 @@ class VideosController < ApplicationController
     @video.user = current_user
     @video.tag_list = params[:tag_list]
     if @video.save
-      redirect_to video_path(@video), notice: 'Video was successfully created'
+      redirect_to video_path(@video), notice: t('videos.notice')
     else
       render :new
     end

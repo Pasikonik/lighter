@@ -1,4 +1,7 @@
 en:
+  time:
+    formats:
+      default: "%I:%M %p %d-%m-%Y"
   basic:
     sing_in: "Sign in"
     sing_up: "Sign up"
@@ -26,6 +29,8 @@ en:
     index:
       author: "author"
   videos:
+    notice: "Video was successfully created"
+    local_file: "Local file"
     index:
       type: "Type"
       tricks: "Tricks"

@@ -14,12 +14,12 @@
       .tab-panel
         %ul.nav.nav-tabs{role: 'tablist'}
           %li.active{role: 'presentation'}
-            %a{href: '#local', "aria-controls": "local", role: "tab", "data-toggle": "tab"} plik lokalny
+            %a{href: '#local', "aria-controls": "local", role: "tab", "data-toggle": "tab"}= t('videos.local_file') + " (*.mp4)"
           %li{role: 'presentation'}
-            %a{href: '#remote', "aria-controls": "remote", role: "tab", "data-toggle": "tab"} youtube
+            %a{href: '#remote', "aria-controls": "remote", role: "tab", "data-toggle": "tab"} Youtube
         .tab-content
           .tab-pane.content-tab.active{role: 'tabpannel', id: 'local'}
-            = f.file_field :source
+            = f.file_field :source, accept: 'video/mp4'
           .tab-pane.content-tab{role: 'tabpannel', id: 'remote'}
             = f.input :remote, label: false, placeholder: 'Youtube'
       = f.button :submit, class: "center-block"

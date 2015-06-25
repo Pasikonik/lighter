@@ -7,4 +7,4 @@
       %div{id: "level" + i.to_s, class: "panel-collapse collapse #{'in' if i == 1}", role: "tabpanel", "aria-labelledby": "heading" + i.to_s}
         .listGroup
           - Tutorial.level(i).each do |tutorial|
-            = link_to tutorial.title, tutorial_path(tutorial), class: "list-group-item"
+            = link_to tutorial.title, tutorial_path(tutorial), class: "list-group-item text-center"

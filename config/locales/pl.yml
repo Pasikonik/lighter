@@ -1,4 +1,7 @@
 pl:
+  time:
+    formats:
+      default: "%H:%M %d-%m-%Y"
   basic:
     sing_in: "Zaloguj"
     sing_in_with_fb: "Zaloguj przez Facebook"
@@ -26,6 +29,8 @@ pl:
     index:
       author: "autor"
   videos:
+    notice: "Filmik został utworzony pomyślnie"
+    local_file: "Plik lokalny"
     index:
       type: "Typ"
       tricks: "Triki"

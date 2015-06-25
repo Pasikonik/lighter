@@ -4,4 +4,4 @@
       = link_to video_path(video.id) do
         = image_tag video.thumb, width: 192
         .thumb-title
-          = video.title.upcase
+          = video.title.mb_chars.upcase

@@ -20,7 +20,7 @@
                 = t('.author') + ':'
                 = e.user.login
                 .pull-right
-                  = e.created_at.strftime("%H:%M %d-%m-%Y")
+                  = l e.created_at
               .entry-text
                 = e.body
       - unless e == @entries.last
