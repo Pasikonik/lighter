@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.1'
-gem 'sqlite3'
+gem 'pg'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
@@ -46,7 +46,7 @@ group :development, :test do
   gem 'meta_request'
   gem 'spring'
   gem 'factory_girl_rails'
-
+  gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
 end
@@ -57,4 +57,8 @@ group :test do
   gem 'minitest-reporters'
   gem 'capybara'
   gem 'poltergeist'
+end
+
+group :production do
+  gem 'rails_12factor'
 end

@@ -26,14 +26,18 @@
     = @video.views
   .col-md-2.text-center
     #score
+      - unless user_signed_in?
+        %i.fa.fa-star.fa-lg
+        %br
       = @video.score.round(1)
-    #rate{:rated => @rate}
-      .rating
-        %span{"data-score" => "5"} ☆
-        %span{"data-score" => "4"} ☆
-        %span{"data-score" => "3"} ☆
-        %span{"data-score" => "2"} ☆
-        %span{"data-score" => "1"} ☆
+    - if user_signed_in?
+      #rate{:rated => @rate}
+        .rating
+          %span{"data-score" => "5"} ☆
+          %span{"data-score" => "4"} ☆
+          %span{"data-score" => "3"} ☆
+          %span{"data-score" => "2"} ☆
+          %span{"data-score" => "1"} ☆
 .row
   .col-md-6.col-md-offset-3
     %h5.tags-line
