@@ -8,6 +8,7 @@ class Video < ActiveRecord::Base
   validates_numericality_of :kind, less_than_or_equal_to: 2, greater_than: 0, message: 'must be specify'
   validates :remote, format: { with: /\A[a-zA-Z0-9_-]+\z/ }, if: ->(video){video.remote.present?}
   validate :wrong_video_source
+  validate :file_size
 
   def thumb
     if self.source?
@@ -26,6 +27,10 @@ class Video < ActiveRecord::Base
         errors.add(:source, 'must be specify corectly')
       end
     end
+
+    def file_size
+      if source.file.size.to_f/(1000*1000) > 100
+        errors.add(:file, "You cannot upload a file greater than 100MB")
+      end
+    end
 end
-
-
