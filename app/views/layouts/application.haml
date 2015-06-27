@@ -1,5 +1,5 @@
 !!!
-%html{lang: params[:locale]}
+%html{lang: I18n.locale}
   %head
     %meta{charset: "utf-8"}
     %title Lighter.pl
@@ -54,7 +54,7 @@
               %ul.dropdown-lang.dropdown-menu{role: "menu"}
                 - other_locales.each do |locale|
                   %li
-                    = link_to locale.upcase, locale: locale
+                    = link_to locale.upcase, send("#{locale}_path")
           - if user_signed_in?
             %ul.nav.navbar-nav.navbar-right
               %li.dropdown

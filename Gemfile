@@ -33,8 +33,7 @@ gem 'masonry-rails'
 gem 'fancybox2-rails'
 gem 'activeadmin', github: 'activeadmin'
 gem 'rails-i18n'
-
-
+gem 'http_accept_language'
 
 group :development, :test do
   gem 'byebug'

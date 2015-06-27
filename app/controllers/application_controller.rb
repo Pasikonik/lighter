@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def other_locales
-    ["pl", "en"] - [ I18n.locale.to_s ]
+    I18n.available_locales - [ I18n.locale ]
   end
   helper_method :other_locales
 
@@ -24,8 +24,13 @@ class ApplicationController < ActionController::Base
   def authenticate_admin!
     redirect_to new_user_session_path unless current_user.admin?
   end
- 
+
+  def extract_locale_from_accept_language_header
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+  end
+
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    I18n.locale = session[:locale] || http_accept_language.compatible_language_from(I18n.available_locales) || I18n.default_locale
+    session[:locale] = I18n.locale
   end
 end
