@@ -1,7 +1,7 @@
 class VideoUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video
   include CarrierWave::Video::Thumbnailer
-
+  # I hope so it is work
   storage :fog
 
   version :thumb do
