@@ -12,7 +12,7 @@ CarrierWave.configure do |config|
     if Rails.env.development?
       config.fog_directory = ENV['LIGHT_S3_BUCKETS_DEV']
     elsif Rails.env.production?
-      config.fog_directory = ENV['LIGHT_S3_BUCKETS_DEV']
+      config.fog_directory = ENV['LIGHT_S3_BUCKETS']
     end
   end
 end
