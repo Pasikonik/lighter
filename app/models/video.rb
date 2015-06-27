@@ -8,7 +8,7 @@ class Video < ActiveRecord::Base
   validates_numericality_of :kind, less_than_or_equal_to: 2, greater_than: 0, message: 'must be specify'
   validates :remote, format: { with: /\A[a-zA-Z0-9_-]+\z/ }, if: ->(video){video.remote.present?}
   validate :wrong_video_source
-  validate :file_size
+  validate :file_size, if: ->(video){video.source.present?}
 
   def thumb
     if self.source?
