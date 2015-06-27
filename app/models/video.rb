@@ -30,7 +30,7 @@ class Video < ActiveRecord::Base
 
     def file_size
       if source.file.size.to_f/(1000*1000) > 100
-        errors.add(:file, "You cannot upload a file greater than 100MB")
+        errors.add(:source, "You cannot upload a file greater than 100MB")
       end
     end
 end
